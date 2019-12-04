@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -50,3 +50,8 @@ def retrieve_wakeparks():
         })
     except():
         abort(500)
+
+
+@app.route('/static/<path:filename>')
+def static_files(filename):
+    return send_from_directory(app.config["STATIC_FOLDER"], filename)

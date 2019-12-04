@@ -15,3 +15,4 @@ db_path = "postgres://{}/{}".format(
 class Config(object):
     SQLALCHEMY_DATABASE_URI = db_path
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    STATIC_FOLDER = f"{os.getenv('APP_FOLDER')}/project/static"
