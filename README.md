@@ -6,6 +6,8 @@
 
 ### Docker Container:
 
+Development:
+
 * `docker-compose build` - to build the images
 * `docker-compose up` - to start the containers
 * `docker-compose down` - to stop the containers
@@ -19,7 +21,7 @@ This will seed the db with some basic data.
 
 To connect to the database and check the contents: 
 
-* `docker-compose exec db psql --username=postgres`
+* `docker-compose exec db psql --username=username_goes_here`
 * `\l` - lists all the databases
 * `\c wakemaps_test` - connect to the wakemaps_test database
 * `\d` - to view the tables
@@ -29,3 +31,15 @@ To connect to the database and check the contents:
 To verify the volume is created run: 
 
 * `docker volume inspect wakemaps.api_postgres_data`
+
+Production:
+
+* `docker-compose -f docker-compose.prod.yml build`
+* `docker-compose -f docker-compose.prod.yml up`
+* `docker-compose -f docker-compose.prod.yml down -v`
+
+If this is the first time you are running this, you will need to: 
+
+* `docker-compose exec web python manage.py create_db`
+* `docker-compose exec web python manage.py seed_db` - if these is no data
+* `docker-compose exec db psql --username=username_goes_here --dbname=database_name_goes_here`
