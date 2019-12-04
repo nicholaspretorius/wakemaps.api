@@ -1,0 +1,56 @@
+# builder
+FROM python:stretch as builder
+
+WORKDIR /user/src/app
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+RUN apt-get update -y \
+    && apt-get install -y netcat \
+    && apt-get clean
+
+RUN pip3 install --upgrade pip
+COPY ./requirements.txt .
+COPY . /usr/src/app
+
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
+
+# final
+FROM python:stretch
+
+# create directory for app user
+RUN mkdir -p /home/app
+
+# create app user
+RUN addgroup --system app && adduser --system app --group
+
+# create directories
+ENV HOME=/home/app
+ENV APP_HOME=/home/app/web
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
+
+# install dependencies
+RUN apt-get update -y \
+    && apt-get install -y netcat \
+    && apt-get clean
+
+COPY --from=builder /usr/src/app/wheels /wheels
+COPY --from=builder /usr/src/app/requirements.txt .
+
+RUN pip install --upgrade pip
+RUN pip install --no-cache /wheels/*
+
+COPY ./entrypoint.prod.sh $APP_HOME
+
+# copy project
+COPY . $APP_HOME
+
+# chown all files to app user
+RUN chown -R app:app $APP_HOME
+
+# change to app user
+USER app
+
+ENTRYPOINT ["/home/app/web/entrypoint.prod.sh"]
