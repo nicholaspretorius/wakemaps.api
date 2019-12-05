@@ -1,0 +1,4286 @@
+{
+	"info": {
+		"_postman_id": "6a89aede-3296-4212-a414-a9e00051116d",
+		"name": "WakeMaps API",
+		"description": "WakeMaps API Spec\n\nContact Support:\n Email: todo@test.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "wakeparks",
+			"item": [
+				{
+					"name": "{wakepark id}",
+					"item": [
+						{
+							"name": "Get wakepark by ID",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "api_key",
+										"value": "",
+										"description": "JWT Token (https://jwt.io/)"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/wakeparks/:wakepark_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"wakeparks",
+										":wakepark_id"
+									],
+									"variable": [
+										{
+											"key": "wakepark_id",
+											"value": "<long>",
+											"description": "ID of wakepark to return"
+										}
+									]
+								},
+								"description": "Returns a single wakepark"
+							},
+							"response": [
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": {
+													"content": "JWT Token (https://jwt.io/)",
+													"type": "text/plain"
+												},
+												"key": "api_key",
+												"value": ""
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/wakeparks/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"wakeparks",
+												"<long>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": {
+													"content": "JWT Token (https://jwt.io/)",
+													"type": "text/plain"
+												},
+												"key": "api_key",
+												"value": ""
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/wakeparks/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"wakeparks",
+												"<long>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"name\": \"<string>\",\n \"id\": \"<long>\",\n \"park_audience\": \"<string>\",\n \"park_open\": \"<boolean>\",\n \"park_published\": \"<boolean>\",\n \"logo_url\": \"<string>\",\n \"email1\": \"<string>\",\n \"email2\": \"<string>\",\n \"telephone1\": \"<string>\",\n \"telephone2\": \"<string>\",\n \"instagram_url\": \"<string>\",\n \"facebook_url\": \"<string>\",\n \"youtube_url\": \"<string>\",\n \"vimeo_url\": \"<string>\",\n \"twitter_url\": \"<string>\",\n \"website_url\": \"<string>\",\n \"summary\": \"<string>\",\n \"description\": \"<string>\",\n \"location\": {\n  \"id\": \"<long>\",\n  \"lat\": \"<long>\",\n  \"lng\": \"<long>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"address3\": \"<string>\",\n  \"area_code\": \"<string>\",\n  \"city_town\": \"<string>\",\n  \"region\": \"<string>\",\n  \"time_zone\": \"<string>\",\n  \"country\": {\n   \"id\": \"<long>\",\n   \"country_name\": \"<string>\",\n   \"country_code\": \"<string>\",\n   \"country_flag\": \"<string>\",\n   \"country_flag_emoji\": \"<string>\",\n   \"currency\": {\n    \"id\": \"<long>\",\n    \"currency_name\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"currency_symbol\": \"<string>\",\n    \"currency_short\": \"<string>\"\n   }\n  }\n },\n \"languages\": [\n  {\n   \"id\": \"<long>\",\n   \"language_name\": \"<string>\",\n   \"language_code\": \"<string>\"\n  },\n  {\n   \"id\": \"<long>\",\n   \"language_name\": \"<string>\",\n   \"language_code\": \"<string>\"\n  }\n ],\n \"cable_type\": {\n  \"id\": \"<long>\",\n  \"type\": \"<string>\",\n  \"direction\": \"<string>\"\n },\n \"images\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"videos\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}"
+								}
+							]
+						},
+						{
+							"name": "Deletes a wakepark",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "api_key",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/wakeparks/:wakepark_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"wakeparks",
+										":wakepark_id"
+									],
+									"variable": [
+										{
+											"key": "wakepark_id",
+											"value": "<long>",
+											"description": "Wakepark id to delete"
+										}
+									]
+								},
+								"description": "Permanently deletes a wakepark listing"
+							},
+							"response": [
+								{
+									"name": "bad request",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "api_key",
+												"value": "<string>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/wakeparks/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"wakeparks",
+												"<long>"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "api_key",
+												"value": "<string>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/wakeparks/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"wakeparks",
+												"<long>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "unauthorized",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "api_key",
+												"value": "<string>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/wakeparks/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"wakeparks",
+												"<long>"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update an existing wakepark",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"<string>\",\n    \"id\": \"<long>\",\n    \"park_audience\": \"<string>\",\n    \"park_open\": \"<boolean>\",\n    \"park_published\": \"<boolean>\",\n    \"logo_url\": \"<string>\",\n    \"email1\": \"<string>\",\n    \"email2\": \"<string>\",\n    \"telephone1\": \"<string>\",\n    \"telephone2\": \"<string>\",\n    \"instagram_url\": \"<string>\",\n    \"facebook_url\": \"<string>\",\n    \"youtube_url\": \"<string>\",\n    \"vimeo_url\": \"<string>\",\n    \"twitter_url\": \"<string>\",\n    \"website_url\": \"<string>\",\n    \"summary\": \"<string>\",\n    \"description\": \"<string>\",\n    \"location\": {\n        \"id\": \"<long>\",\n        \"lat\": \"<long>\",\n        \"lng\": \"<long>\",\n        \"address1\": \"<string>\",\n        \"address2\": \"<string>\",\n        \"address3\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"city_town\": \"<string>\",\n        \"region\": \"<string>\",\n        \"time_zone\": \"<string>\",\n        \"country\": {\n            \"id\": \"<long>\",\n            \"country_name\": \"<string>\",\n            \"country_code\": \"<string>\",\n            \"country_flag\": \"<string>\",\n            \"country_flag_emoji\": \"<string>\",\n            \"currency\": {\n                \"id\": \"<long>\",\n                \"currency_name\": \"<string>\",\n                \"currency_code\": \"<string>\",\n                \"currency_symbol\": \"<string>\",\n                \"currency_short\": \"<string>\"\n            }\n        }\n    },\n    \"languages\": [\n        {\n            \"id\": \"<long>\",\n            \"language_name\": \"<string>\",\n            \"language_code\": \"<string>\"\n        },\n        {\n            \"id\": \"<long>\",\n            \"language_name\": \"<string>\",\n            \"language_code\": \"<string>\"\n        }\n    ],\n    \"cable_type\": {\n        \"id\": \"<long>\",\n        \"type\": \"<string>\",\n        \"direction\": \"<string>\"\n    },\n    \"images\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"videos\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/wakeparks/:wakepark_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"wakeparks",
+										":wakepark_id"
+									],
+									"variable": [
+										{
+											"key": "wakepark_id",
+											"value": "<long>",
+											"description": "ID of wakepark to return"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "bad request",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"<string>\",\n    \"id\": \"<long>\",\n    \"park_audience\": \"<string>\",\n    \"park_open\": \"<boolean>\",\n    \"park_published\": \"<boolean>\",\n    \"logo_url\": \"<string>\",\n    \"email1\": \"<string>\",\n    \"email2\": \"<string>\",\n    \"telephone1\": \"<string>\",\n    \"telephone2\": \"<string>\",\n    \"instagram_url\": \"<string>\",\n    \"facebook_url\": \"<string>\",\n    \"youtube_url\": \"<string>\",\n    \"vimeo_url\": \"<string>\",\n    \"twitter_url\": \"<string>\",\n    \"website_url\": \"<string>\",\n    \"summary\": \"<string>\",\n    \"description\": \"<string>\",\n    \"location\": {\n        \"id\": \"<long>\",\n        \"lat\": \"<long>\",\n        \"lng\": \"<long>\",\n        \"address1\": \"<string>\",\n        \"address2\": \"<string>\",\n        \"address3\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"city_town\": \"<string>\",\n        \"region\": \"<string>\",\n        \"time_zone\": \"<string>\",\n        \"country\": {\n            \"id\": \"<long>\",\n            \"country_name\": \"<string>\",\n            \"country_code\": \"<string>\",\n            \"country_flag\": \"<string>\",\n            \"country_flag_emoji\": \"<string>\",\n            \"currency\": {\n                \"id\": \"<long>\",\n                \"currency_name\": \"<string>\",\n                \"currency_code\": \"<string>\",\n                \"currency_symbol\": \"<string>\",\n                \"currency_short\": \"<string>\"\n            }\n        }\n    },\n    \"languages\": [\n        {\n            \"id\": \"<long>\",\n            \"language_name\": \"<string>\",\n            \"language_code\": \"<string>\"\n        },\n        {\n            \"id\": \"<long>\",\n            \"language_name\": \"<string>\",\n            \"language_code\": \"<string>\"\n        }\n    ],\n    \"cable_type\": {\n        \"id\": \"<long>\",\n        \"type\": \"<string>\",\n        \"direction\": \"<string>\"\n    },\n    \"images\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"videos\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/wakeparks/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"wakeparks",
+												"<long>"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"<string>\",\n    \"id\": \"<long>\",\n    \"park_audience\": \"<string>\",\n    \"park_open\": \"<boolean>\",\n    \"park_published\": \"<boolean>\",\n    \"logo_url\": \"<string>\",\n    \"email1\": \"<string>\",\n    \"email2\": \"<string>\",\n    \"telephone1\": \"<string>\",\n    \"telephone2\": \"<string>\",\n    \"instagram_url\": \"<string>\",\n    \"facebook_url\": \"<string>\",\n    \"youtube_url\": \"<string>\",\n    \"vimeo_url\": \"<string>\",\n    \"twitter_url\": \"<string>\",\n    \"website_url\": \"<string>\",\n    \"summary\": \"<string>\",\n    \"description\": \"<string>\",\n    \"location\": {\n        \"id\": \"<long>\",\n        \"lat\": \"<long>\",\n        \"lng\": \"<long>\",\n        \"address1\": \"<string>\",\n        \"address2\": \"<string>\",\n        \"address3\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"city_town\": \"<string>\",\n        \"region\": \"<string>\",\n        \"time_zone\": \"<string>\",\n        \"country\": {\n            \"id\": \"<long>\",\n            \"country_name\": \"<string>\",\n            \"country_code\": \"<string>\",\n            \"country_flag\": \"<string>\",\n            \"country_flag_emoji\": \"<string>\",\n            \"currency\": {\n                \"id\": \"<long>\",\n                \"currency_name\": \"<string>\",\n                \"currency_code\": \"<string>\",\n                \"currency_symbol\": \"<string>\",\n                \"currency_short\": \"<string>\"\n            }\n        }\n    },\n    \"languages\": [\n        {\n            \"id\": \"<long>\",\n            \"language_name\": \"<string>\",\n            \"language_code\": \"<string>\"\n        },\n        {\n            \"id\": \"<long>\",\n            \"language_name\": \"<string>\",\n            \"language_code\": \"<string>\"\n        }\n    ],\n    \"cable_type\": {\n        \"id\": \"<long>\",\n        \"type\": \"<string>\",\n        \"direction\": \"<string>\"\n    },\n    \"images\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"videos\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/wakeparks/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"wakeparks",
+												"<long>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"<string>\",\n    \"id\": \"<long>\",\n    \"park_audience\": \"<string>\",\n    \"park_open\": \"<boolean>\",\n    \"park_published\": \"<boolean>\",\n    \"logo_url\": \"<string>\",\n    \"email1\": \"<string>\",\n    \"email2\": \"<string>\",\n    \"telephone1\": \"<string>\",\n    \"telephone2\": \"<string>\",\n    \"instagram_url\": \"<string>\",\n    \"facebook_url\": \"<string>\",\n    \"youtube_url\": \"<string>\",\n    \"vimeo_url\": \"<string>\",\n    \"twitter_url\": \"<string>\",\n    \"website_url\": \"<string>\",\n    \"summary\": \"<string>\",\n    \"description\": \"<string>\",\n    \"location\": {\n        \"id\": \"<long>\",\n        \"lat\": \"<long>\",\n        \"lng\": \"<long>\",\n        \"address1\": \"<string>\",\n        \"address2\": \"<string>\",\n        \"address3\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"city_town\": \"<string>\",\n        \"region\": \"<string>\",\n        \"time_zone\": \"<string>\",\n        \"country\": {\n            \"id\": \"<long>\",\n            \"country_name\": \"<string>\",\n            \"country_code\": \"<string>\",\n            \"country_flag\": \"<string>\",\n            \"country_flag_emoji\": \"<string>\",\n            \"currency\": {\n                \"id\": \"<long>\",\n                \"currency_name\": \"<string>\",\n                \"currency_code\": \"<string>\",\n                \"currency_symbol\": \"<string>\",\n                \"currency_short\": \"<string>\"\n            }\n        }\n    },\n    \"languages\": [\n        {\n            \"id\": \"<long>\",\n            \"language_name\": \"<string>\",\n            \"language_code\": \"<string>\"\n        },\n        {\n            \"id\": \"<long>\",\n            \"language_name\": \"<string>\",\n            \"language_code\": \"<string>\"\n        }\n    ],\n    \"cable_type\": {\n        \"id\": \"<long>\",\n        \"type\": \"<string>\",\n        \"direction\": \"<string>\"\n    },\n    \"images\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"videos\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/wakeparks/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"wakeparks",
+												"<long>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"name\": \"<string>\",\n \"id\": \"<long>\",\n \"park_audience\": \"<string>\",\n \"park_open\": \"<boolean>\",\n \"park_published\": \"<boolean>\",\n \"logo_url\": \"<string>\",\n \"email1\": \"<string>\",\n \"email2\": \"<string>\",\n \"telephone1\": \"<string>\",\n \"telephone2\": \"<string>\",\n \"instagram_url\": \"<string>\",\n \"facebook_url\": \"<string>\",\n \"youtube_url\": \"<string>\",\n \"vimeo_url\": \"<string>\",\n \"twitter_url\": \"<string>\",\n \"website_url\": \"<string>\",\n \"summary\": \"<string>\",\n \"description\": \"<string>\",\n \"location\": {\n  \"id\": \"<long>\",\n  \"lat\": \"<long>\",\n  \"lng\": \"<long>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"address3\": \"<string>\",\n  \"area_code\": \"<string>\",\n  \"city_town\": \"<string>\",\n  \"region\": \"<string>\",\n  \"time_zone\": \"<string>\",\n  \"country\": {\n   \"id\": \"<long>\",\n   \"country_name\": \"<string>\",\n   \"country_code\": \"<string>\",\n   \"country_flag\": \"<string>\",\n   \"country_flag_emoji\": \"<string>\",\n   \"currency\": {\n    \"id\": \"<long>\",\n    \"currency_name\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"currency_symbol\": \"<string>\",\n    \"currency_short\": \"<string>\"\n   }\n  }\n },\n \"languages\": [\n  {\n   \"id\": \"<long>\",\n   \"language_name\": \"<string>\",\n   \"language_code\": \"<string>\"\n  },\n  {\n   \"id\": \"<long>\",\n   \"language_name\": \"<string>\",\n   \"language_code\": \"<string>\"\n  }\n ],\n \"cable_type\": {\n  \"id\": \"<long>\",\n  \"type\": \"<string>\",\n  \"direction\": \"<string>\"\n },\n \"images\": [\n  \"<string>\",\n  \"<string>\"\n ],\n \"videos\": [\n  \"<string>\",\n  \"<string>\"\n ]\n}"
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get wakeparks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7d6fb43d-1d33-4d4a-a4e3-a3df15afa828",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains drinks array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.be.a('string')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/wakeparks?per_page=<string>&search=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wakeparks"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "<string>",
+									"description": "Number of items to be returned per page"
+								},
+								{
+									"key": "search",
+									"value": "<string>",
+									"description": "Search term"
+								}
+							]
+						},
+						"description": "Returns a list of all wakeparks that can be paged or provided with a search term."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/wakeparks?per_page=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"wakeparks"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "<string>"
+										},
+										{
+											"key": "search",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"name\": \"<string>\",\n  \"id\": \"<long>\",\n  \"park_audience\": \"<string>\",\n  \"park_open\": \"<boolean>\",\n  \"park_published\": \"<boolean>\",\n  \"logo_url\": \"<string>\",\n  \"email1\": \"<string>\",\n  \"email2\": \"<string>\",\n  \"telephone1\": \"<string>\",\n  \"telephone2\": \"<string>\",\n  \"instagram_url\": \"<string>\",\n  \"facebook_url\": \"<string>\",\n  \"youtube_url\": \"<string>\",\n  \"vimeo_url\": \"<string>\",\n  \"twitter_url\": \"<string>\",\n  \"website_url\": \"<string>\",\n  \"summary\": \"<string>\",\n  \"description\": \"<string>\",\n  \"location\": {\n   \"id\": \"<long>\",\n   \"lat\": \"<long>\",\n   \"lng\": \"<long>\",\n   \"address1\": \"<string>\",\n   \"address2\": \"<string>\",\n   \"address3\": \"<string>\",\n   \"area_code\": \"<string>\",\n   \"city_town\": \"<string>\",\n   \"region\": \"<string>\",\n   \"time_zone\": \"<string>\",\n   \"country\": {\n    \"id\": \"<long>\",\n    \"country_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"country_flag\": \"<string>\",\n    \"country_flag_emoji\": \"<string>\",\n    \"currency\": {\n     \"id\": \"<long>\",\n     \"currency_name\": \"<string>\",\n     \"currency_code\": \"<string>\",\n     \"currency_symbol\": \"<string>\",\n     \"currency_short\": \"<string>\"\n    }\n   }\n  },\n  \"languages\": [\n   {\n    \"id\": \"<long>\",\n    \"language_name\": \"<string>\",\n    \"language_code\": \"<string>\"\n   },\n   {\n    \"id\": \"<long>\",\n    \"language_name\": \"<string>\",\n    \"language_code\": \"<string>\"\n   }\n  ],\n  \"cable_type\": {\n   \"id\": \"<long>\",\n   \"type\": \"<string>\",\n   \"direction\": \"<string>\"\n  },\n  \"images\": [\n   \"<string>\",\n   \"<string>\"\n  ],\n  \"videos\": [\n   \"<string>\",\n   \"<string>\"\n  ]\n },\n {\n  \"name\": \"<string>\",\n  \"id\": \"<long>\",\n  \"park_audience\": \"<string>\",\n  \"park_open\": \"<boolean>\",\n  \"park_published\": \"<boolean>\",\n  \"logo_url\": \"<string>\",\n  \"email1\": \"<string>\",\n  \"email2\": \"<string>\",\n  \"telephone1\": \"<string>\",\n  \"telephone2\": \"<string>\",\n  \"instagram_url\": \"<string>\",\n  \"facebook_url\": \"<string>\",\n  \"youtube_url\": \"<string>\",\n  \"vimeo_url\": \"<string>\",\n  \"twitter_url\": \"<string>\",\n  \"website_url\": \"<string>\",\n  \"summary\": \"<string>\",\n  \"description\": \"<string>\",\n  \"location\": {\n   \"id\": \"<long>\",\n   \"lat\": \"<long>\",\n   \"lng\": \"<long>\",\n   \"address1\": \"<string>\",\n   \"address2\": \"<string>\",\n   \"address3\": \"<string>\",\n   \"area_code\": \"<string>\",\n   \"city_town\": \"<string>\",\n   \"region\": \"<string>\",\n   \"time_zone\": \"<string>\",\n   \"country\": {\n    \"id\": \"<long>\",\n    \"country_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"country_flag\": \"<string>\",\n    \"country_flag_emoji\": \"<string>\",\n    \"currency\": {\n     \"id\": \"<long>\",\n     \"currency_name\": \"<string>\",\n     \"currency_code\": \"<string>\",\n     \"currency_symbol\": \"<string>\",\n     \"currency_short\": \"<string>\"\n    }\n   }\n  },\n  \"languages\": [\n   {\n    \"id\": \"<long>\",\n    \"language_name\": \"<string>\",\n    \"language_code\": \"<string>\"\n   },\n   {\n    \"id\": \"<long>\",\n    \"language_name\": \"<string>\",\n    \"language_code\": \"<string>\"\n   }\n  ],\n  \"cable_type\": {\n   \"id\": \"<long>\",\n   \"type\": \"<string>\",\n   \"direction\": \"<string>\"\n  },\n  \"images\": [\n   \"<string>\",\n   \"<string>\"\n  ],\n  \"videos\": [\n   \"<string>\",\n   \"<string>\"\n  ]\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "Add a new wakepark",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"<string>\",\n    \"id\": \"<long>\",\n    \"park_audience\": \"<string>\",\n    \"park_open\": \"<boolean>\",\n    \"park_published\": \"<boolean>\",\n    \"logo_url\": \"<string>\",\n    \"email1\": \"<string>\",\n    \"email2\": \"<string>\",\n    \"telephone1\": \"<string>\",\n    \"telephone2\": \"<string>\",\n    \"instagram_url\": \"<string>\",\n    \"facebook_url\": \"<string>\",\n    \"youtube_url\": \"<string>\",\n    \"vimeo_url\": \"<string>\",\n    \"twitter_url\": \"<string>\",\n    \"website_url\": \"<string>\",\n    \"summary\": \"<string>\",\n    \"description\": \"<string>\",\n    \"location\": {\n        \"id\": \"<long>\",\n        \"lat\": \"<long>\",\n        \"lng\": \"<long>\",\n        \"address1\": \"<string>\",\n        \"address2\": \"<string>\",\n        \"address3\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"city_town\": \"<string>\",\n        \"region\": \"<string>\",\n        \"time_zone\": \"<string>\",\n        \"country\": {\n            \"id\": \"<long>\",\n            \"country_name\": \"<string>\",\n            \"country_code\": \"<string>\",\n            \"country_flag\": \"<string>\",\n            \"country_flag_emoji\": \"<string>\",\n            \"currency\": {\n                \"id\": \"<long>\",\n                \"currency_name\": \"<string>\",\n                \"currency_code\": \"<string>\",\n                \"currency_symbol\": \"<string>\",\n                \"currency_short\": \"<string>\"\n            }\n        }\n    },\n    \"languages\": [\n        {\n            \"id\": \"<long>\",\n            \"language_name\": \"<string>\",\n            \"language_code\": \"<string>\"\n        },\n        {\n            \"id\": \"<long>\",\n            \"language_name\": \"<string>\",\n            \"language_code\": \"<string>\"\n        }\n    ],\n    \"cable_type\": {\n        \"id\": \"<long>\",\n        \"type\": \"<string>\",\n        \"direction\": \"<string>\"\n    },\n    \"images\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"videos\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/wakeparks",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"wakeparks"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"<string>\",\n    \"id\": \"<long>\",\n    \"park_audience\": \"<string>\",\n    \"park_open\": \"<boolean>\",\n    \"park_published\": \"<boolean>\",\n    \"logo_url\": \"<string>\",\n    \"email1\": \"<string>\",\n    \"email2\": \"<string>\",\n    \"telephone1\": \"<string>\",\n    \"telephone2\": \"<string>\",\n    \"instagram_url\": \"<string>\",\n    \"facebook_url\": \"<string>\",\n    \"youtube_url\": \"<string>\",\n    \"vimeo_url\": \"<string>\",\n    \"twitter_url\": \"<string>\",\n    \"website_url\": \"<string>\",\n    \"summary\": \"<string>\",\n    \"description\": \"<string>\",\n    \"location\": {\n        \"id\": \"<long>\",\n        \"lat\": \"<long>\",\n        \"lng\": \"<long>\",\n        \"address1\": \"<string>\",\n        \"address2\": \"<string>\",\n        \"address3\": \"<string>\",\n        \"area_code\": \"<string>\",\n        \"city_town\": \"<string>\",\n        \"region\": \"<string>\",\n        \"time_zone\": \"<string>\",\n        \"country\": {\n            \"id\": \"<long>\",\n            \"country_name\": \"<string>\",\n            \"country_code\": \"<string>\",\n            \"country_flag\": \"<string>\",\n            \"country_flag_emoji\": \"<string>\",\n            \"currency\": {\n                \"id\": \"<long>\",\n                \"currency_name\": \"<string>\",\n                \"currency_code\": \"<string>\",\n                \"currency_symbol\": \"<string>\",\n                \"currency_short\": \"<string>\"\n            }\n        }\n    },\n    \"languages\": [\n        {\n            \"id\": \"<long>\",\n            \"language_name\": \"<string>\",\n            \"language_code\": \"<string>\"\n        },\n        {\n            \"id\": \"<long>\",\n            \"language_name\": \"<string>\",\n            \"language_code\": \"<string>\"\n        }\n    ],\n    \"cable_type\": {\n        \"id\": \"<long>\",\n        \"type\": \"<string>\",\n        \"direction\": \"<string>\"\n    },\n    \"images\": [\n        \"<string>\",\n        \"<string>\"\n    ],\n    \"videos\": [\n        \"<string>\",\n        \"<string>\"\n    ]\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/wakeparks",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"wakeparks"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "cables",
+			"item": [
+				{
+					"name": "{cable id}",
+					"item": [
+						{
+							"name": "Get cables",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cables/:cable_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cables",
+										":cable_id"
+									],
+									"variable": [
+										{
+											"key": "cable_id",
+											"value": "<long>",
+											"description": "cable_id to retrieve"
+										}
+									]
+								},
+								"description": "Returns a list of all cables."
+							},
+							"response": [
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/cables/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cables",
+												"<long>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/cables/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cables",
+												"<long>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": \"<long>\",\n  \"type\": \"<string>\",\n  \"direction\": \"<string>\"\n },\n {\n  \"id\": \"<long>\",\n  \"type\": \"<string>\",\n  \"direction\": \"<string>\"\n }\n]"
+								}
+							]
+						},
+						{
+							"name": "Delete cable",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cables/:cable_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cables",
+										":cable_id"
+									],
+									"variable": [
+										{
+											"key": "cable_id",
+											"value": "<long>",
+											"description": "cable_id to delete"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/cables/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cables",
+												"<long>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/cables/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cables",
+												"<long>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "unauthorised",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/cables/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cables",
+												"<long>"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update a cable",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"type\": \"<string>\",\n    \"direction\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cables/:cable_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cables",
+										":cable_id"
+									],
+									"variable": [
+										{
+											"key": "cable_id",
+											"value": "<long>",
+											"description": "cable_id to retrieve"
+										}
+									]
+								},
+								"description": "Update a specific cables data"
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"type\": \"<string>\",\n    \"direction\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/cables/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cables",
+												"<long>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"type\": \"<string>\",\n    \"direction\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/cables/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cables",
+												"<long>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "bad request",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"type\": \"<string>\",\n    \"direction\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/cables/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cables",
+												"<long>"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "unauthorised",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"type\": \"<string>\",\n    \"direction\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/cables/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"cables",
+												"<long>"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get cables",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cables",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cables"
+							]
+						},
+						"description": "Returns a list of all cables."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cables",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cables"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"id\": \"<long>\",\n  \"type\": \"<string>\",\n  \"direction\": \"<string>\"\n },\n {\n  \"id\": \"<long>\",\n  \"type\": \"<string>\",\n  \"direction\": \"<string>\"\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "Add a new cable",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"<long>\",\n    \"type\": \"<string>\",\n    \"direction\": \"<string>\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cables",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cables"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"type\": \"<string>\",\n    \"direction\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cables",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cables"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "unauthorised",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"type\": \"<string>\",\n    \"direction\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cables",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cables"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "locations",
+			"item": [
+				{
+					"name": "{location id}",
+					"item": [
+						{
+							"name": "Get location",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/locations/:location_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"locations",
+										":location_id"
+									],
+									"variable": [
+										{
+											"key": "location_id",
+											"value": "<long>",
+											"description": "location_id to retrieve"
+										}
+									]
+								},
+								"description": "Returns a single location."
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/locations/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"locations",
+												"<long>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": \"<long>\",\n  \"lat\": \"<long>\",\n  \"lng\": \"<long>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"address3\": \"<string>\",\n  \"area_code\": \"<string>\",\n  \"city_town\": \"<string>\",\n  \"region\": \"<string>\",\n  \"time_zone\": \"<string>\",\n  \"country\": {\n   \"id\": \"<long>\",\n   \"country_name\": \"<string>\",\n   \"country_code\": \"<string>\",\n   \"country_flag\": \"<string>\",\n   \"country_flag_emoji\": \"<string>\",\n   \"currency\": {\n    \"id\": \"<long>\",\n    \"currency_name\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"currency_symbol\": \"<string>\",\n    \"currency_short\": \"<string>\"\n   }\n  }\n },\n {\n  \"id\": \"<long>\",\n  \"lat\": \"<long>\",\n  \"lng\": \"<long>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"address3\": \"<string>\",\n  \"area_code\": \"<string>\",\n  \"city_town\": \"<string>\",\n  \"region\": \"<string>\",\n  \"time_zone\": \"<string>\",\n  \"country\": {\n   \"id\": \"<long>\",\n   \"country_name\": \"<string>\",\n   \"country_code\": \"<string>\",\n   \"country_flag\": \"<string>\",\n   \"country_flag_emoji\": \"<string>\",\n   \"currency\": {\n    \"id\": \"<long>\",\n    \"currency_name\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"currency_symbol\": \"<string>\",\n    \"currency_short\": \"<string>\"\n   }\n  }\n }\n]"
+								},
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/locations/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"locations",
+												"<long>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Delete location",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/locations/:location_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"locations",
+										":location_id"
+									],
+									"variable": [
+										{
+											"key": "location_id",
+											"value": "<long>",
+											"description": "location_id to delete"
+										}
+									]
+								},
+								"description": "Delete a single location"
+							},
+							"response": [
+								{
+									"name": "unauthorised",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/locations/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"locations",
+												"<long>"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/locations/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"locations",
+												"<long>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/locations/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"locations",
+												"<long>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update a location",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"type\": \"<string>\",\n    \"direction\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/locations/:location_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"locations",
+										":location_id"
+									],
+									"variable": [
+										{
+											"key": "location_id",
+											"value": "<long>",
+											"description": "location_id to retrieve"
+										}
+									]
+								},
+								"description": "Update a single location's data"
+							},
+							"response": [
+								{
+									"name": "bad request",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"type\": \"<string>\",\n    \"direction\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/locations/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"locations",
+												"<long>"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"type\": \"<string>\",\n    \"direction\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/locations/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"locations",
+												"<long>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "unauthorised",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"type\": \"<string>\",\n    \"direction\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/locations/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"locations",
+												"<long>"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"type\": \"<string>\",\n    \"direction\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/locations/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"locations",
+												"<long>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get locations",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/locations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"locations"
+							]
+						},
+						"description": "Returns a list of all locations."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/locations",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"locations"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"id\": \"<long>\",\n  \"lat\": \"<long>\",\n  \"lng\": \"<long>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"address3\": \"<string>\",\n  \"area_code\": \"<string>\",\n  \"city_town\": \"<string>\",\n  \"region\": \"<string>\",\n  \"time_zone\": \"<string>\",\n  \"country\": {\n   \"id\": \"<long>\",\n   \"country_name\": \"<string>\",\n   \"country_code\": \"<string>\",\n   \"country_flag\": \"<string>\",\n   \"country_flag_emoji\": \"<string>\",\n   \"currency\": {\n    \"id\": \"<long>\",\n    \"currency_name\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"currency_symbol\": \"<string>\",\n    \"currency_short\": \"<string>\"\n   }\n  }\n },\n {\n  \"id\": \"<long>\",\n  \"lat\": \"<long>\",\n  \"lng\": \"<long>\",\n  \"address1\": \"<string>\",\n  \"address2\": \"<string>\",\n  \"address3\": \"<string>\",\n  \"area_code\": \"<string>\",\n  \"city_town\": \"<string>\",\n  \"region\": \"<string>\",\n  \"time_zone\": \"<string>\",\n  \"country\": {\n   \"id\": \"<long>\",\n   \"country_name\": \"<string>\",\n   \"country_code\": \"<string>\",\n   \"country_flag\": \"<string>\",\n   \"country_flag_emoji\": \"<string>\",\n   \"currency\": {\n    \"id\": \"<long>\",\n    \"currency_name\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"currency_symbol\": \"<string>\",\n    \"currency_short\": \"<string>\"\n   }\n  }\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "Add a new location",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"<long>\",\n    \"lat\": \"<long>\",\n    \"lng\": \"<long>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"address3\": \"<string>\",\n    \"area_code\": \"<string>\",\n    \"city_town\": \"<string>\",\n    \"region\": \"<string>\",\n    \"time_zone\": \"<string>\",\n    \"country\": {\n        \"id\": \"<long>\",\n        \"country_name\": \"<string>\",\n        \"country_code\": \"<string>\",\n        \"country_flag\": \"<string>\",\n        \"country_flag_emoji\": \"<string>\",\n        \"currency\": {\n            \"id\": \"<long>\",\n            \"currency_name\": \"<string>\",\n            \"currency_code\": \"<string>\",\n            \"currency_symbol\": \"<string>\",\n            \"currency_short\": \"<string>\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/locations",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"locations"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"lat\": \"<long>\",\n    \"lng\": \"<long>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"address3\": \"<string>\",\n    \"area_code\": \"<string>\",\n    \"city_town\": \"<string>\",\n    \"region\": \"<string>\",\n    \"time_zone\": \"<string>\",\n    \"country\": {\n        \"id\": \"<long>\",\n        \"country_name\": \"<string>\",\n        \"country_code\": \"<string>\",\n        \"country_flag\": \"<string>\",\n        \"country_flag_emoji\": \"<string>\",\n        \"currency\": {\n            \"id\": \"<long>\",\n            \"currency_name\": \"<string>\",\n            \"currency_code\": \"<string>\",\n            \"currency_symbol\": \"<string>\",\n            \"currency_short\": \"<string>\"\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/locations",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"locations"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "unauthorised",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"lat\": \"<long>\",\n    \"lng\": \"<long>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"address3\": \"<string>\",\n    \"area_code\": \"<string>\",\n    \"city_town\": \"<string>\",\n    \"region\": \"<string>\",\n    \"time_zone\": \"<string>\",\n    \"country\": {\n        \"id\": \"<long>\",\n        \"country_name\": \"<string>\",\n        \"country_code\": \"<string>\",\n        \"country_flag\": \"<string>\",\n        \"country_flag_emoji\": \"<string>\",\n        \"currency\": {\n            \"id\": \"<long>\",\n            \"currency_name\": \"<string>\",\n            \"currency_code\": \"<string>\",\n            \"currency_symbol\": \"<string>\",\n            \"currency_short\": \"<string>\"\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/locations",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"locations"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"lat\": \"<long>\",\n    \"lng\": \"<long>\",\n    \"address1\": \"<string>\",\n    \"address2\": \"<string>\",\n    \"address3\": \"<string>\",\n    \"area_code\": \"<string>\",\n    \"city_town\": \"<string>\",\n    \"region\": \"<string>\",\n    \"time_zone\": \"<string>\",\n    \"country\": {\n        \"id\": \"<long>\",\n        \"country_name\": \"<string>\",\n        \"country_code\": \"<string>\",\n        \"country_flag\": \"<string>\",\n        \"country_flag_emoji\": \"<string>\",\n        \"currency\": {\n            \"id\": \"<long>\",\n            \"currency_name\": \"<string>\",\n            \"currency_code\": \"<string>\",\n            \"currency_symbol\": \"<string>\",\n            \"currency_short\": \"<string>\"\n        }\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/locations",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"locations"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "countries",
+			"item": [
+				{
+					"name": "{country id}",
+					"item": [
+						{
+							"name": "Get country",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/countries/:country_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"countries",
+										":country_id"
+									],
+									"variable": [
+										{
+											"key": "country_id",
+											"value": "<long>",
+											"description": "country_id to retrieve"
+										}
+									]
+								},
+								"description": "Returns a single country."
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/countries/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"countries",
+												"<long>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": \"<long>\",\n  \"country_name\": \"<string>\",\n  \"country_code\": \"<string>\",\n  \"country_flag\": \"<string>\",\n  \"country_flag_emoji\": \"<string>\",\n  \"currency\": {\n   \"id\": \"<long>\",\n   \"currency_name\": \"<string>\",\n   \"currency_code\": \"<string>\",\n   \"currency_symbol\": \"<string>\",\n   \"currency_short\": \"<string>\"\n  }\n },\n {\n  \"id\": \"<long>\",\n  \"country_name\": \"<string>\",\n  \"country_code\": \"<string>\",\n  \"country_flag\": \"<string>\",\n  \"country_flag_emoji\": \"<string>\",\n  \"currency\": {\n   \"id\": \"<long>\",\n   \"currency_name\": \"<string>\",\n   \"currency_code\": \"<string>\",\n   \"currency_symbol\": \"<string>\",\n   \"currency_short\": \"<string>\"\n  }\n }\n]"
+								},
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/countries/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"countries",
+												"<long>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Delete country",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/countries/:country_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"countries",
+										":country_id"
+									],
+									"variable": [
+										{
+											"key": "country_id",
+											"value": "<long>",
+											"description": "country_id to delete"
+										}
+									]
+								},
+								"description": "Delete a single country"
+							},
+							"response": [
+								{
+									"name": "unauthorised",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/countries/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"countries",
+												"<long>"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/countries/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"countries",
+												"<long>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/countries/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"countries",
+												"<long>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update a country",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"country_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"country_flag\": \"<string>\",\n    \"country_flag_emoji\": \"<string>\",\n    \"currency\": {\n        \"id\": \"<long>\",\n        \"currency_name\": \"<string>\",\n        \"currency_code\": \"<string>\",\n        \"currency_symbol\": \"<string>\",\n        \"currency_short\": \"<string>\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/countries/:country_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"countries",
+										":country_id"
+									],
+									"variable": [
+										{
+											"key": "country_id",
+											"value": "<long>",
+											"description": "country_id to retrieve"
+										}
+									]
+								},
+								"description": "Update a single country's data"
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"country_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"country_flag\": \"<string>\",\n    \"country_flag_emoji\": \"<string>\",\n    \"currency\": {\n        \"id\": \"<long>\",\n        \"currency_name\": \"<string>\",\n        \"currency_code\": \"<string>\",\n        \"currency_symbol\": \"<string>\",\n        \"currency_short\": \"<string>\"\n    }\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/countries/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"countries",
+												"<long>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "unauthorised",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"country_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"country_flag\": \"<string>\",\n    \"country_flag_emoji\": \"<string>\",\n    \"currency\": {\n        \"id\": \"<long>\",\n        \"currency_name\": \"<string>\",\n        \"currency_code\": \"<string>\",\n        \"currency_symbol\": \"<string>\",\n        \"currency_short\": \"<string>\"\n    }\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/countries/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"countries",
+												"<long>"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"country_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"country_flag\": \"<string>\",\n    \"country_flag_emoji\": \"<string>\",\n    \"currency\": {\n        \"id\": \"<long>\",\n        \"currency_name\": \"<string>\",\n        \"currency_code\": \"<string>\",\n        \"currency_symbol\": \"<string>\",\n        \"currency_short\": \"<string>\"\n    }\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/countries/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"countries",
+												"<long>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "bad request",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"country_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"country_flag\": \"<string>\",\n    \"country_flag_emoji\": \"<string>\",\n    \"currency\": {\n        \"id\": \"<long>\",\n        \"currency_name\": \"<string>\",\n        \"currency_code\": \"<string>\",\n        \"currency_symbol\": \"<string>\",\n        \"currency_short\": \"<string>\"\n    }\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/countries/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"countries",
+												"<long>"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get countries",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/countries",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"countries"
+							]
+						},
+						"description": "Returns a list of all countries."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/countries",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"countries"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"id\": \"<long>\",\n  \"country_name\": \"<string>\",\n  \"country_code\": \"<string>\",\n  \"country_flag\": \"<string>\",\n  \"country_flag_emoji\": \"<string>\",\n  \"currency\": {\n   \"id\": \"<long>\",\n   \"currency_name\": \"<string>\",\n   \"currency_code\": \"<string>\",\n   \"currency_symbol\": \"<string>\",\n   \"currency_short\": \"<string>\"\n  }\n },\n {\n  \"id\": \"<long>\",\n  \"country_name\": \"<string>\",\n  \"country_code\": \"<string>\",\n  \"country_flag\": \"<string>\",\n  \"country_flag_emoji\": \"<string>\",\n  \"currency\": {\n   \"id\": \"<long>\",\n   \"currency_name\": \"<string>\",\n   \"currency_code\": \"<string>\",\n   \"currency_symbol\": \"<string>\",\n   \"currency_short\": \"<string>\"\n  }\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "Add a new country",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"<long>\",\n    \"country_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"country_flag\": \"<string>\",\n    \"country_flag_emoji\": \"<string>\",\n    \"currency\": {\n        \"id\": \"<long>\",\n        \"currency_name\": \"<string>\",\n        \"currency_code\": \"<string>\",\n        \"currency_symbol\": \"<string>\",\n        \"currency_short\": \"<string>\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/countries",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"countries"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"country_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"country_flag\": \"<string>\",\n    \"country_flag_emoji\": \"<string>\",\n    \"currency\": {\n        \"id\": \"<long>\",\n        \"currency_name\": \"<string>\",\n        \"currency_code\": \"<string>\",\n        \"currency_symbol\": \"<string>\",\n        \"currency_short\": \"<string>\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/countries",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"countries"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"country_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"country_flag\": \"<string>\",\n    \"country_flag_emoji\": \"<string>\",\n    \"currency\": {\n        \"id\": \"<long>\",\n        \"currency_name\": \"<string>\",\n        \"currency_code\": \"<string>\",\n        \"currency_symbol\": \"<string>\",\n        \"currency_short\": \"<string>\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/countries",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"countries"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "unauthorised",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"country_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"country_flag\": \"<string>\",\n    \"country_flag_emoji\": \"<string>\",\n    \"currency\": {\n        \"id\": \"<long>\",\n        \"currency_name\": \"<string>\",\n        \"currency_code\": \"<string>\",\n        \"currency_symbol\": \"<string>\",\n        \"currency_short\": \"<string>\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/countries",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"countries"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "currencies",
+			"item": [
+				{
+					"name": "{currency id}",
+					"item": [
+						{
+							"name": "Get currency",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/currencies/:currency_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"currencies",
+										":currency_id"
+									],
+									"variable": [
+										{
+											"key": "currency_id",
+											"value": "<long>",
+											"description": "currency_id to retrieve"
+										}
+									]
+								},
+								"description": "Returns a single currency."
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/currencies/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"currencies",
+												"<long>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": \"<long>\",\n  \"country_name\": \"<string>\",\n  \"country_code\": \"<string>\",\n  \"country_flag\": \"<string>\",\n  \"country_flag_emoji\": \"<string>\",\n  \"currency\": {\n   \"id\": \"<long>\",\n   \"currency_name\": \"<string>\",\n   \"currency_code\": \"<string>\",\n   \"currency_symbol\": \"<string>\",\n   \"currency_short\": \"<string>\"\n  }\n },\n {\n  \"id\": \"<long>\",\n  \"country_name\": \"<string>\",\n  \"country_code\": \"<string>\",\n  \"country_flag\": \"<string>\",\n  \"country_flag_emoji\": \"<string>\",\n  \"currency\": {\n   \"id\": \"<long>\",\n   \"currency_name\": \"<string>\",\n   \"currency_code\": \"<string>\",\n   \"currency_symbol\": \"<string>\",\n   \"currency_short\": \"<string>\"\n  }\n }\n]"
+								},
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/currencies/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"currencies",
+												"<long>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Delete currency",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/currencies/:currency_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"currencies",
+										":currency_id"
+									],
+									"variable": [
+										{
+											"key": "currency_id",
+											"value": "<long>",
+											"description": "currency_id to delete"
+										}
+									]
+								},
+								"description": "Delete a single currency"
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/currencies/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"currencies",
+												"<long>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/currencies/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"currencies",
+												"<long>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "unauthorised",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/currencies/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"currencies",
+												"<long>"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update a currency",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"currency_name\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"currency_symbol\": \"<string>\",\n    \"currency_short\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/currencies/:currency_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"currencies",
+										":currency_id"
+									],
+									"variable": [
+										{
+											"key": "currency_id",
+											"value": "<long>",
+											"description": "currency_id to retrieve"
+										}
+									]
+								},
+								"description": "Update a single currency's data"
+							},
+							"response": [
+								{
+									"name": "unauthorised",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"currency_name\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"currency_symbol\": \"<string>\",\n    \"currency_short\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/currencies/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"currencies",
+												"<long>"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"currency_name\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"currency_symbol\": \"<string>\",\n    \"currency_short\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/currencies/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"currencies",
+												"<long>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "bad request",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"currency_name\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"currency_symbol\": \"<string>\",\n    \"currency_short\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/currencies/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"currencies",
+												"<long>"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"currency_name\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"currency_symbol\": \"<string>\",\n    \"currency_short\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/currencies/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"currencies",
+												"<long>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get currencies",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/currencies",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"currencies"
+							]
+						},
+						"description": "Returns a list of all currencies."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/currencies",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"currencies"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"id\": \"<long>\",\n  \"currency_name\": \"<string>\",\n  \"currency_code\": \"<string>\",\n  \"currency_symbol\": \"<string>\",\n  \"currency_short\": \"<string>\"\n },\n {\n  \"id\": \"<long>\",\n  \"currency_name\": \"<string>\",\n  \"currency_code\": \"<string>\",\n  \"currency_symbol\": \"<string>\",\n  \"currency_short\": \"<string>\"\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "Add a new currency",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"<long>\",\n    \"currency_name\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"currency_symbol\": \"<string>\",\n    \"currency_short\": \"<string>\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/currencies",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"currencies"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"currency_name\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"currency_symbol\": \"<string>\",\n    \"currency_short\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/currencies",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"currencies"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"currency_name\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"currency_symbol\": \"<string>\",\n    \"currency_short\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/currencies",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"currencies"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "unauthorised",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"currency_name\": \"<string>\",\n    \"currency_code\": \"<string>\",\n    \"currency_symbol\": \"<string>\",\n    \"currency_short\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/currencies",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"currencies"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "languages",
+			"item": [
+				{
+					"name": "{language id}",
+					"item": [
+						{
+							"name": "Get language",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/languages/:language_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"languages",
+										":language_id"
+									],
+									"variable": [
+										{
+											"key": "language_id",
+											"value": "<long>",
+											"description": "language_id to retrieve"
+										}
+									]
+								},
+								"description": "Returns a single language."
+							},
+							"response": [
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/languages/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"languages",
+												"<long>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/languages/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"languages",
+												"<long>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "[\n {\n  \"id\": \"<long>\",\n  \"language_name\": \"<string>\",\n  \"language_code\": \"<string>\"\n },\n {\n  \"id\": \"<long>\",\n  \"language_name\": \"<string>\",\n  \"language_code\": \"<string>\"\n }\n]"
+								}
+							]
+						},
+						{
+							"name": "Delete language",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/languages/:language_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"languages",
+										":language_id"
+									],
+									"variable": [
+										{
+											"key": "language_id",
+											"value": "<long>",
+											"description": "language_id to delete"
+										}
+									]
+								},
+								"description": "Delete a single language"
+							},
+							"response": [
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/languages/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"languages",
+												"<long>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/languages/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"languages",
+												"<long>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "unauthorised",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/languages/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"languages",
+												"<long>"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Update a language",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"language_name\": \"<string>\",\n    \"language_code\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/languages/:language_id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"languages",
+										":language_id"
+									],
+									"variable": [
+										{
+											"key": "language_id",
+											"value": "<long>",
+											"description": "language_id to retrieve"
+										}
+									]
+								},
+								"description": "Update a single language's data"
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"language_name\": \"<string>\",\n    \"language_code\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/languages/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"languages",
+												"<long>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "unauthorised",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"language_name\": \"<string>\",\n    \"language_code\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/languages/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"languages",
+												"<long>"
+											]
+										}
+									},
+									"status": "Forbidden",
+									"code": 403,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "bad request",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"language_name\": \"<string>\",\n    \"language_code\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/languages/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"languages",
+												"<long>"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"language_name\": \"<string>\",\n    \"language_code\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/languages/<long>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"languages",
+												"<long>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Get languages",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/languages",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"languages"
+							]
+						},
+						"description": "Returns a list of all languages."
+					},
+					"response": [
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/languages",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"languages"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n {\n  \"id\": \"<long>\",\n  \"language_name\": \"<string>\",\n  \"language_code\": \"<string>\"\n },\n {\n  \"id\": \"<long>\",\n  \"language_name\": \"<string>\",\n  \"language_code\": \"<string>\"\n }\n]"
+						}
+					]
+				},
+				{
+					"name": "Add a new language",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"<long>\",\n    \"language_name\": \"<string>\",\n    \"language_code\": \"<string>\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/languages",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"languages"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"language_name\": \"<string>\",\n    \"language_code\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/languages",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"languages"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "unauthorised",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"language_name\": \"<string>\",\n    \"language_code\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/languages",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"languages"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"language_name\": \"<string>\",\n    \"language_code\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/languages",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"languages"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Retrieve users",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users?per_page=<string>&search=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "<string>",
+									"description": "Number of items to be returned per page"
+								},
+								{
+									"key": "search",
+									"value": "<string>",
+									"description": "Search term"
+								}
+							]
+						},
+						"description": "Returns a list of all users - only performed with read:users permission on role"
+					},
+					"response": [
+						{
+							"name": "resource not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users?per_page=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "<string>"
+										},
+										{
+											"key": "search",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users?per_page=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "<string>"
+										},
+										{
+											"key": "search",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users?per_page=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "<string>"
+										},
+										{
+											"key": "search",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"user_role\": \"<string>\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "This can be done by any user - each user requires a unique email address."
+					},
+					"response": [
+						{
+							"name": "bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"user_role\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "resource not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"user_role\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"user_role\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": \"<long>\",\n \"username\": \"<string>\",\n \"firstName\": \"<string>\",\n \"lastName\": \"<string>\",\n \"email\": \"<string>\",\n \"password\": \"<string>\",\n \"phone\": \"<string>\",\n \"user_role\": \"<string>\"\n}"
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "{user Id}",
+					"item": [
+						{
+							"name": "Get user by userId",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/user/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "<string>",
+											"description": "The userId for the user that needs to be fetched."
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "bad request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/user/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												"<string>"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/user/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												"<string>"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n \"id\": \"<long>\",\n \"username\": \"<string>\",\n \"firstName\": \"<string>\",\n \"lastName\": \"<string>\",\n \"email\": \"<string>\",\n \"password\": \"<string>\",\n \"phone\": \"<string>\",\n \"user_role\": \"<string>\"\n}"
+								},
+								{
+									"name": "resource not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/user/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												"<string>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Delete user",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/user/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "<string>",
+											"description": "The name that needs to be deleted"
+										}
+									]
+								},
+								"description": "This can only be done by the logged in user or by superadmin."
+							},
+							"response": [
+								{
+									"name": "User not found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/user/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												"<string>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "Invalid username supplied",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{baseUrl}}/user/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												"<string>"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						},
+						{
+							"name": "Updated user",
+							"request": {
+								"auth": {
+									"type": "oauth2"
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"user_role\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/:userId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										":userId"
+									],
+									"variable": [
+										{
+											"key": "userId",
+											"value": "<string>",
+											"description": "The userId for the user to be updated"
+										}
+									]
+								},
+								"description": "This can only be done by the logged in user."
+							},
+							"response": [
+								{
+									"name": "Invalid user supplied",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"user_role\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/user/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												"<string>"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								},
+								{
+									"name": "User not found",
+									"originalRequest": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "*/*"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"user_role\": \"<string>\"\n}"
+										},
+										"url": {
+											"raw": "{{baseUrl}}/user/<string>",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"user",
+												"<string>"
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"body": ""
+								}
+							]
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Logs user into the system",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/user/login?username=<string>&password=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"login"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "<string>",
+									"description": "The user name for login"
+								},
+								{
+									"key": "password",
+									"value": "<string>",
+									"description": "The password for login in clear text"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successful operation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/user/login?username=<string>&password=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"login"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "<string>"
+										},
+										{
+											"key": "password",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Rate-Limit",
+									"value": "<integer>",
+									"description": "calls per hour allowed by the user"
+								},
+								{
+									"key": "X-Expires-After",
+									"value": "<dateTime>",
+									"description": "date in UTC when token expires"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "\"<string>\""
+						},
+						{
+							"name": "Invalid username/password supplied",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/user/login?username=<string>&password=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"login"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "<string>"
+										},
+										{
+											"key": "password",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Logs out current logged in user session",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/user/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "successful operation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/user/logout",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"logout"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "769fb52b-ea81-4fcc-b9f0-699826326afd",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "4f45b1a8-7acf-4495-a433-4aced736c574",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "10fcea8b-c50b-4831-b126-a76e79fd9548",
+			"key": "baseUrl",
+			"value": "https://todo.domain.com/api",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
