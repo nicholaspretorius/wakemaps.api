@@ -1215,6 +1215,48 @@ definitions:
           - "admin"
           - "park_admin"
           - "rider"
+  Contacts:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          description: "Channel name"
+          enum:
+            - "Telephone"
+            - "Email"
+        type:
+          type: "string"
+          description: "Contact channel type"
+          enum:
+            - "Telephone"
+            - "Facebook Messenger"
+            - "Whatsapp"
+            - "Email Address"
+        value:
+          type: "string"
+          description: "Telephone or messenger number or email address"
+          example: "info@wakeparkname.com / +27123456789"
+  Channels:
+    type: "array"
+    items:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          description: "Web/social media channels"
+          enum:
+            - "Instagram"
+            - "Facebook"
+            - "YouTube"
+            - "Twitter"
+            - "Vimeo"
+            - "Website"
+        url:
+          type: "string"
+          description: "Social media URL and handle"
+          example: "https://www.instagram.com/handle_name"
   Wakepark:
     type: "object"
     required:
@@ -1243,34 +1285,38 @@ definitions:
       logo_url:
         type: "string"
         description: "URL String for the wakepark logo"
-      email1:
-        type: "string"
-        example: "info@domain.com"
-      email2:
-        type: "string"
-      telephone1:
-        type: "string"
-        example: "+27 12 345 6789"
-      telephone2:
-        type: "string"
-        example: "+27 79 345 6789"
-      instagram_url:
-        type: "string"
-      facebook_url:
-        type: "string"
-        example: "https://www.instagram.com/handle/"
-      youtube_url:
-        type: "string"
-        example: "https://www.youtube.com/user/handle"
-      vimeo_url:
-        type: "string"
-        example: "https://vimeo.com/handle"
-      twitter_url:
-        type: "string"
-        example: "https://twitter.com/handle"
-      website_url:
-        type: "string"
-        example: "https://www.yourwebsitename.com"
+      contact_details:
+        $ref: "#/definitions/Contacts"
+      # email1:
+      #   type: "string"
+      #   example: "info@domain.com"
+      # email2:
+      #   type: "string"
+      # telephone1:
+      #   type: "string"
+      #   example: "+27 12 345 6789"
+      # telephone2:
+      #   type: "string"
+      #   example: "+27 79 345 6789"
+      channels: 
+        $ref: "#/definitions/Channels" 
+      # instagram_url:
+      #   type: "string"
+      # facebook_url:
+      #   type: "string"
+      #   example: "https://www.instagram.com/handle/"
+      # youtube_url:
+      #   type: "string"
+      #   example: "https://www.youtube.com/user/handle"
+      # vimeo_url:
+      #   type: "string"
+      #   example: "https://vimeo.com/handle"
+      # twitter_url:
+      #   type: "string"
+      #   example: "https://twitter.com/handle"
+      # website_url:
+      #   type: "string"
+      #   example: "https://www.yourwebsitename.com"
       summary:
         type: "string"
         description: "The headline (short) summary of wakepark."
