@@ -376,7 +376,7 @@ paths:
         - "locations"
       summary: "Update a location"
       description: "Update a single location's data"
-      operationId: "patch_cable"
+      operationId: "patch_location"
       consumes:
         - "application/json"
       produces:
@@ -680,6 +680,136 @@ paths:
         - name: "currency_id"
           in: "path"
           description: "currency_id to delete"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        200:
+          description: "success"
+        403:
+          description: "unauthorised"
+        404:
+          description: "resource not found"
+      security:
+        - wakemaps_auth:
+            - "delete:admin"
+  /languages:
+    get:
+      tags:
+        - "languages"
+      summary: "Get languages"
+      description: "Returns a list of all languages."
+      operationId: "retrieve_languages"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Language"
+    post:
+      tags:
+        - "languages"
+      summary: "Add a new language"
+      description: ""
+      operationId: "create_language"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "Language object that needs to be added"
+          required: true
+          schema:
+            $ref: "#/definitions/Language"
+      responses:
+        201:
+          description: "created"
+        400:
+          description: "bad request"
+        403:
+          description: "unauthorised"
+      security:
+        - wakemaps_auth:
+            - "post:admin"
+  /languages/{language_id}:
+    get:
+      tags:
+        - "languages"
+      summary: "Get language"
+      description: "Returns a single language."
+      operationId: "retrieve_language"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "language_id"
+          in: "path"
+          description: "language_id to retrieve"
+          required: true
+          type: "integer"
+          format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Language"
+        404:
+          description: "resource not found"
+    patch:
+      tags:
+        - "languages"
+      summary: "Update a language"
+      description: "Update a single language's data"
+      operationId: "patch_language"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "language_id"
+          in: "path"
+          description: "language_id to retrieve"
+          required: true
+          type: "integer"
+          format: "int64"
+        - in: "body"
+          name: "body"
+          description: "Language object that needs to be added"
+          required: true
+          schema:
+            $ref: "#/definitions/Language"
+      responses:
+        200:
+          description: "success"
+        400:
+          description: "bad request"
+        403:
+          description: "unauthorised"
+        404:
+          description: "resource not found"
+      security:
+        - wakemaps_auth:
+            - "patch:admin"
+    delete:
+      tags:
+        - "languages"
+      summary: "Delete language"
+      description: "Delete a single language"
+      operationId: "delete_language"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "language_id"
+          in: "path"
+          description: "language_id to delete"
           required: true
           type: "integer"
           format: "int64"
