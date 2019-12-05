@@ -14,6 +14,25 @@
 					"item": [
 						{
 							"name": "Get wakepark by ID",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "37b0b5e1-50b5-421b-b1e5-4473bddddc58",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"response contains a wakepark\", function () {",
+											"    var json = pm.response.json();",
+											"    pm.expect(json.name).to.be.a('string')",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "noauth"
@@ -124,6 +143,25 @@
 						},
 						{
 							"name": "Deletes a wakepark",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4adc6a3c-0d88-448b-b440-04f1b1d34058",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"response contains a wakepark\", function () {",
+											"    var json = pm.response.json();",
+											"    pm.expect(json.name).to.be.a('string')",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "oauth2"
@@ -258,6 +296,25 @@
 						},
 						{
 							"name": "Update an existing wakepark",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "aac56745-c6e6-4d97-bcc2-5131387e211f",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"response contains a wakepark\", function () {",
+											"    var json = pm.response.json();",
+											"    pm.expect(json.name).to.be.a('string')",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "oauth2"
@@ -421,9 +478,9 @@
 									"    pm.response.to.have.status(200);",
 									"});",
 									"",
-									"pm.test(\"value contains drinks array\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.name).to.be.a('string')",
+									"pm.test(\"response has an 'items' array containing wakeparks\", function () {",
+									"    var json = pm.response.json();",
+									"    pm.expect(json.items).to.be.an('array')",
 									"});"
 								],
 								"type": "text/javascript"
@@ -501,6 +558,25 @@
 				},
 				{
 					"name": "Add a new wakepark",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b65a3bf8-a92c-43ac-bd4b-c0c8b4718e74",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"response contains a wakepark\", function () {",
+									"    var json = pm.response.json();",
+									"    pm.expect(json.item).to.be.an('object')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "oauth2"
@@ -575,7 +651,26 @@
 					"name": "{cable id}",
 					"item": [
 						{
-							"name": "Get cables",
+							"name": "Get cable",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "39f2af12-25fe-41c5-bc81-0b60e0b5ae6e",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"value contains drinks array\", function () {",
+											"    var json = pm.response.json();",
+											"    pm.expect(json.id).to.be.an('integer')",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "noauth"
@@ -662,6 +757,25 @@
 						},
 						{
 							"name": "Delete cable",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d0f293e5-3e16-411c-90fb-2821cab4747c",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"response contains the deleted cable id\", function () {",
+											"    var json = pm.response.json();",
+											"    pm.expect(json.id).to.be.an('integer')",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "oauth2"
@@ -775,6 +889,25 @@
 						},
 						{
 							"name": "Update a cable",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4c4791c9-3f93-4a8a-bf06-6a36c2a72dac",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"response contains the patched cable's id\", function () {",
+											"    var json = pm.response.json();",
+											"    pm.expect(json.id).to.be.an('integer')",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "oauth2"
@@ -966,6 +1099,25 @@
 				},
 				{
 					"name": "Get cables",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3c8fd4cd-6233-4d71-8c7b-68d7f7d85a84",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response has an 'items' array containing cables\", function () {",
+									"    var json = pm.response.json();",
+									"    pm.expect(json.items).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -1015,6 +1167,25 @@
 				},
 				{
 					"name": "Add a new cable",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e9037092-b8e2-45f6-827f-c0542e763e4b",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"response contains an 'item' object\", function () {",
+									"    var json = pm.response.json();",
+									"    pm.expect(json.item).to.be.an('object')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "oauth2"
@@ -1126,6 +1297,27 @@
 					"item": [
 						{
 							"name": "Get location",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4f57a5f4-d3ec-4441-9e88-fda6224f9f4b",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"response contains a location with an id, lat and lng\", function () {",
+											"    var json = pm.response.json();",
+											"    pm.expect(json.id).to.be.an('integer')",
+											"    pm.expect(json.lat).to.be.an('integer')",
+											"    pm.expect(json.lng).to.be.an('integer')",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "noauth"
@@ -1212,6 +1404,25 @@
 						},
 						{
 							"name": "Delete location",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "717f5452-bf96-47da-9089-83ec58200d9f",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"response contains the deleted location id\", function () {",
+											"    var json = pm.response.json();",
+											"    pm.expect(json.id).to.be.an('integer')",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "oauth2"
@@ -1326,6 +1537,25 @@
 						},
 						{
 							"name": "Update a location",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "b56b15dd-4545-4e8a-9cb7-e8851be88541",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"response contains the patched location's id\", function () {",
+											"    var json = pm.response.json();",
+											"    pm.expect(json.id).to.be.an('integer')",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "oauth2"
@@ -1517,6 +1747,25 @@
 				},
 				{
 					"name": "Get locations",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b658d57a-4293-4e3b-8b24-a0a6a6e19d24",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response has an 'items' array containing locations\", function () {",
+									"    var json = pm.response.json();",
+									"    pm.expect(json.items).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -1566,6 +1815,25 @@
 				},
 				{
 					"name": "Add a new location",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2f4100e1-409f-415c-9577-7e88cc0a74c0",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"response contains a wakepark\", function () {",
+									"    var json = pm.response.json();",
+									"    pm.expect(json.item).to.be.an('object')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "oauth2"
@@ -1713,6 +1981,28 @@
 					"item": [
 						{
 							"name": "Get country",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "c758076d-eb21-44f5-9988-cf8612041430",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"response contains a country with an country_id, country_name and country_code\", function () {",
+											"    var json = pm.response.json();",
+											"    pm.expect(json.country_id).to.be.an('integer')",
+											"    pm.expect(json.country_name).to.be.a('string')",
+											"    pm.expect(json.country_code).to.be.a('string')",
+											"    pm.expect(json.country_code.length()).to.be(2)",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "noauth"
@@ -1799,6 +2089,25 @@
 						},
 						{
 							"name": "Delete country",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0be15f1e-f9df-4281-8074-638593d8bfb0",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"response contains the deleted country_id\", function () {",
+											"    var json = pm.response.json();",
+											"    pm.expect(json.country_id).to.be.an('integer')",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "oauth2"
@@ -1913,6 +2222,25 @@
 						},
 						{
 							"name": "Update a country",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "d238dd0d-46a1-42cf-ac3d-c6f1d97ace7c",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"response contains the patched country_id\", function () {",
+											"    var json = pm.response.json();",
+											"    pm.expect(json.country_id).to.be.an('integer')",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "oauth2"
@@ -2104,6 +2432,25 @@
 				},
 				{
 					"name": "Get countries",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "290b3d70-a97f-4d61-89a4-3a88c3f605af",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response has an 'items' array containing countries\", function () {",
+									"    var json = pm.response.json();",
+									"    pm.expect(json.items).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -2153,6 +2500,25 @@
 				},
 				{
 					"name": "Add a new country",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e80e081d-4994-4531-bd68-97233072aaec",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"response contains a country\", function () {",
+									"    var json = pm.response.json();",
+									"    pm.expect(json.item).to.be.an('object')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "oauth2"
@@ -2300,6 +2666,28 @@
 					"item": [
 						{
 							"name": "Get currency",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "80d39d7a-da7c-426c-8c69-e348b3765f95",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"response contains a currency with an currency_id, currency_name and a currency_code\", function () {",
+											"    var json = pm.response.json();",
+											"    pm.expect(json.currency_id).to.be.an('integer')",
+											"    pm.expect(json.currency_name).to.be.a('string')",
+											"    pm.expect(json.currency_code).to.be.a('string')",
+											"    pm.expect(json.currency_code.length()).to.be(3)",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "noauth"
@@ -2386,6 +2774,25 @@
 						},
 						{
 							"name": "Delete currency",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "7eb9fde0-0255-47dc-83ec-7cfad2cdd8e0",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"response contains the deleted currency_id\", function () {",
+											"    var json = pm.response.json();",
+											"    pm.expect(json.currency_id).to.be.an('integer')",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "oauth2"
@@ -2500,6 +2907,25 @@
 						},
 						{
 							"name": "Update a currency",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2a4f4b66-dcd5-405e-a6ee-c8556cb9a526",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"response contains the patched country_id\", function () {",
+											"    var json = pm.response.json();",
+											"    pm.expect(json.country_id).to.be.an('integer')",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "oauth2"
@@ -2691,6 +3117,25 @@
 				},
 				{
 					"name": "Get currencies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e15a1e93-ca3d-44f5-9838-f4097eb5326e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response has an 'items' array containing currencies\", function () {",
+									"    var json = pm.response.json();",
+									"    pm.expect(json.items).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -2740,6 +3185,25 @@
 				},
 				{
 					"name": "Add a new currency",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a584a47d-42a9-4cdf-bfa8-9c84bfc45a6e",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"response contains a currency\", function () {",
+									"    var json = pm.response.json();",
+									"    pm.expect(json.item).to.be.an('object')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "oauth2"
@@ -2887,6 +3351,28 @@
 					"item": [
 						{
 							"name": "Get language",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "57282154-71c1-42c4-80c6-6a244ad88826",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"response contains a currency with an language_id, language_name and language_code\", function () {",
+											"    var json = pm.response.json();",
+											"    pm.expect(json.language_id).to.be.an('integer')",
+											"    pm.expect(json.language_name).to.be.a('string')",
+											"    pm.expect(json.language_code).to.be.a('string')",
+											"    pm.expect(json.currency_code.length()).to.be(2)",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "noauth"
@@ -2973,6 +3459,25 @@
 						},
 						{
 							"name": "Delete language",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3e8e1ec7-a7bd-45ef-873b-bf51afc95e79",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"response contains the deleted language_id\", function () {",
+											"    var json = pm.response.json();",
+											"    pm.expect(json.language_id).to.be.an('integer')",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "oauth2"
@@ -3087,6 +3592,25 @@
 						},
 						{
 							"name": "Update a language",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6ab9f680-82b5-4765-b995-97d8ce477a06",
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {",
+											"    pm.response.to.have.status(200);",
+											"});",
+											"",
+											"pm.test(\"response contains the patched language_id\", function () {",
+											"    var json = pm.response.json();",
+											"    pm.expect(json.language_id).to.be.an('integer')",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"request": {
 								"auth": {
 									"type": "oauth2"
@@ -3278,6 +3802,25 @@
 				},
 				{
 					"name": "Get languages",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ed66dae3-4dda-4a4e-9f42-4d25c18cd456",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"response has an 'items' array containing languages\", function () {",
+									"    var json = pm.response.json();",
+									"    pm.expect(json.items).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -3327,6 +3870,25 @@
 				},
 				{
 					"name": "Add a new language",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4c4dd12a-edbb-4597-a3c4-0a2dc03e1f61",
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test(\"response contains a language\", function () {",
+									"    var json = pm.response.json();",
+									"    pm.expect(json.item).to.be.an('object')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "oauth2"
@@ -3468,296 +4030,6 @@
 		},
 		{
 			"name": "users",
-			"item": [
-				{
-					"name": "Retrieve users",
-					"request": {
-						"auth": {
-							"type": "oauth2"
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/users?per_page=<string>&search=<string>",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"users"
-							],
-							"query": [
-								{
-									"key": "per_page",
-									"value": "<string>",
-									"description": "Number of items to be returned per page"
-								},
-								{
-									"key": "search",
-									"value": "<string>",
-									"description": "Search term"
-								}
-							]
-						},
-						"description": "Returns a list of all users - only performed with read:users permission on role"
-					},
-					"response": [
-						{
-							"name": "resource not found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/users?per_page=<string>&search=<string>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"users"
-									],
-									"query": [
-										{
-											"key": "per_page",
-											"value": "<string>"
-										},
-										{
-											"key": "search",
-											"value": "<string>"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "success",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/users?per_page=<string>&search=<string>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"users"
-									],
-									"query": [
-										{
-											"key": "per_page",
-											"value": "<string>"
-										},
-										{
-											"key": "search",
-											"value": "<string>"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "unauthorized",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/users?per_page=<string>&search=<string>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"users"
-									],
-									"query": [
-										{
-											"key": "per_page",
-											"value": "<string>"
-										},
-										{
-											"key": "search",
-											"value": "<string>"
-										}
-									]
-								}
-							},
-							"status": "Forbidden",
-							"code": 403,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
-				},
-				{
-					"name": "Create user",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "*/*"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"user_role\": \"<string>\"\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/users",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"users"
-							]
-						},
-						"description": "This can be done by any user - each user requires a unique email address."
-					},
-					"response": [
-						{
-							"name": "bad request",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "*/*"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"user_role\": \"<string>\"\n}"
-								},
-								"url": {
-									"raw": "{{baseUrl}}/users",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"users"
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "resource not found",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "*/*"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"user_role\": \"<string>\"\n}"
-								},
-								"url": {
-									"raw": "{{baseUrl}}/users",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"users"
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "created",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "*/*"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"user_role\": \"<string>\"\n}"
-								},
-								"url": {
-									"raw": "{{baseUrl}}/users",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"users"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"id\": \"<long>\",\n \"username\": \"<string>\",\n \"firstName\": \"<string>\",\n \"lastName\": \"<string>\",\n \"email\": \"<string>\",\n \"password\": \"<string>\",\n \"phone\": \"<string>\",\n \"user_role\": \"<string>\"\n}"
-						}
-					]
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "user",
 			"item": [
 				{
 					"name": "{user Id}",
@@ -4079,6 +4351,290 @@
 					"_postman_isSubFolder": true
 				},
 				{
+					"name": "Retrieve users",
+					"request": {
+						"auth": {
+							"type": "oauth2"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/users?per_page=<string>&search=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "per_page",
+									"value": "<string>",
+									"description": "Number of items to be returned per page"
+								},
+								{
+									"key": "search",
+									"value": "<string>",
+									"description": "Search term"
+								}
+							]
+						},
+						"description": "Returns a list of all users - only performed with read:users permission on role"
+					},
+					"response": [
+						{
+							"name": "resource not found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users?per_page=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "<string>"
+										},
+										{
+											"key": "search",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users?per_page=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "<string>"
+										},
+										{
+											"key": "search",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/users?per_page=<string>&search=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "<string>"
+										},
+										{
+											"key": "search",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Create user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "*/*"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"user_role\": \"<string>\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						},
+						"description": "This can be done by any user - each user requires a unique email address."
+					},
+					"response": [
+						{
+							"name": "bad request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"user_role\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "resource not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"user_role\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "*/*"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"id\": \"<long>\",\n    \"username\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"email\": \"<string>\",\n    \"password\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"user_role\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": \"<long>\",\n \"username\": \"<string>\",\n \"firstName\": \"<string>\",\n \"lastName\": \"<string>\",\n \"email\": \"<string>\",\n \"password\": \"<string>\",\n \"phone\": \"<string>\",\n \"user_role\": \"<string>\"\n}"
+						}
+					]
+				},
+				{
 					"name": "Logs user into the system",
 					"request": {
 						"auth": {
@@ -4276,9 +4832,9 @@
 	],
 	"variable": [
 		{
-			"id": "10fcea8b-c50b-4831-b126-a76e79fd9548",
+			"id": "93d8e2fb-f68d-47a9-b64f-46b02449d5db",
 			"key": "baseUrl",
-			"value": "https://todo.domain.com/api",
+			"value": "http://localhost:5000",
 			"type": "string"
 		}
 	],
