@@ -22,16 +22,22 @@ tags:
   - name: "countries"
     description: "Relevant country data"
     externalDocs:
-      description: "Find out more about country data"
-      url: "https://todo.com"
+      description: "Find out more"
+      url: "https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes"
   - name: "currencies"
     description: "Relevant currency data"
+    externalDocs:
+      description: "Find out more"
+      url: "https://en.wikipedia.org/wiki/List_of_circulating_currencies"
   - name: "locations"
     description: "Wakepark location data"
   - name: "users"
     description: "System user information"
   - name: "languages"
     description: "Languages used at wakeparks"
+    externalDocs:
+      description: "Find out more"
+      url: "https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes"
 schemes:
   - "https"
   - "http"
@@ -1069,6 +1075,7 @@ securityDefinitions:
   api_key:
     type: "apiKey"
     name: "api_key"
+    description: "JWT Token (https://jwt.io/)"
     in: "header"
 definitions:
   Location:
@@ -1080,9 +1087,11 @@ definitions:
       lat:
         type: "integer"
         format: "int64"
+        description: "Latitude"
       lng:
         type: "integer"
         format: "int64"
+        description: "Longitude"
       address1:
         type: "string"
       address2:
@@ -1091,12 +1100,19 @@ definitions:
         type: "string"
       area_code:
         type: "string"
+        example: "GP"
       city_town:
         type: "string"
+        description: "The city, town or nearest town name that people typically associate with the location."
+        example: "Johannesburg"
       region:
         type: "string"
+        description: "The region or provice or state that the city or town is located in."
+        example: "Gauteng"
       time_zone:
         type: "string"
+        description: "The timezone that the location is in in UTC offset"
+        example: "+2:00"
       country:
         $ref: "#/definitions/Country"
   Country:
@@ -1109,6 +1125,7 @@ definitions:
         type: "string"
       country_code:
         type: "string"
+        description: "ISO 3166-1 2-letter country code"
       country_flag:
         type: "string"
       country_flag_emoji:
@@ -1122,13 +1139,18 @@ definitions:
         type: "integer"
         format: "int64"
       currency_name:
+        example: "US Dollar"
         type: "string"
       currency_code:
         type: "string"
+        example: "USD"
+        description: "ISO 4217 currency code"
       currency_symbol:
+        example: "$"
         type: "string"
       currency_short:
         type: "string"
+        example: "dollar"
   Language:
     type: "object"
     properties:
@@ -1137,8 +1159,11 @@ definitions:
         format: "int64"
       language_name:
         type: "string"
+        example: "English"
       language_code:
         type: "string"
+        example: "en"
+        description: "ISO 639-1 language code"
   Cable:
     type: "object"
     properties:
@@ -1152,6 +1177,7 @@ definitions:
           - "5-Tower"
           - "6-Tower"
           - "2-Tower"
+          - "Other"
       direction:
         type: "string"
         description: "Direction of the running cable"
@@ -1175,6 +1201,7 @@ definitions:
         type: "string"
       password:
         type: "string"
+        description: "Minimum 8 characters. Must contain 1 uppercase, 1 lowercase, 1 symbol, 1 number"
       phone:
         type: "string"
       user_role:
@@ -1214,24 +1241,32 @@ definitions:
         description: "URL String for the wakepark logo"
       email1:
         type: "string"
+        example: "info@domain.com"
       email2:
         type: "string"
       telephone1:
         type: "string"
+        example: "+27 12 345 6789"
       telephone2:
         type: "string"
+        example: "+27 79 345 6789"
       instagram_url:
         type: "string"
       facebook_url:
         type: "string"
+        example: "https://www.instagram.com/handle/"
       youtube_url:
         type: "string"
+        example: "https://www.youtube.com/user/handle"
       vimeo_url:
         type: "string"
+        example: "https://vimeo.com/handle"
       twitter_url:
         type: "string"
+        example: "https://twitter.com/handle"
       website_url:
         type: "string"
+        example: "https://www.yourwebsitename.com"
       summary:
         type: "string"
         description: "The headline (short) summary of wakepark."
@@ -1243,8 +1278,8 @@ definitions:
       languages:
         type: "array"
         items:
-          type: "string"
-          description: "Language codes"
+          $ref: "#/definitions/Language"
+          description: "Languages"
       cable_type:
         $ref: "#/definitions/Cable"
       images:
