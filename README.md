@@ -32,6 +32,10 @@ To verify the volume is created run:
 
 * `docker volume inspect wakemaps.api_postgres_data`
 
+Tests: 
+
+* `python -m pytest services/web/project/test.py`
+
 Production:
 
 * `docker-compose -f docker-compose.prod.yml build`
