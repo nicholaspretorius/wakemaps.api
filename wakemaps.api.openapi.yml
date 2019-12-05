@@ -1,0 +1,1301 @@
+openapi: 3.0.1
+info:
+  title: WakeMaps API
+  description: WakeMaps API Spec
+  termsOfService: ""
+  contact:
+    email: todo@test.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.0.1
+externalDocs:
+  description: Find out more about WakeMaps
+  url: https://todo.com
+servers:
+- url: https://todo.domain.com/api
+- url: http://todo.domain.com/api
+tags:
+- name: wakeparks
+  description: Wakepark listings around the world
+  externalDocs:
+    description: Find out more
+    url: https://todo.com
+- name: cables
+  description: Cable-specific data
+- name: countries
+  description: Relevant country data
+  externalDocs:
+    description: Find out more
+    url: https://en.wikipedia.org/wiki/ISO_3166-1#Current_codes
+- name: currencies
+  description: Relevant currency data
+  externalDocs:
+    description: Find out more
+    url: https://en.wikipedia.org/wiki/List_of_circulating_currencies
+- name: locations
+  description: Wakepark location data
+- name: users
+  description: System user information
+- name: languages
+  description: Languages used at wakeparks
+  externalDocs:
+    description: Find out more
+    url: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+paths:
+  /wakeparks:
+    get:
+      tags:
+      - wakeparks
+      summary: Get wakeparks
+      description: Returns a list of all wakeparks that can be paged or provided with
+        a search term.
+      operationId: retrieve_wakeparks
+      parameters:
+      - name: per_page
+        in: query
+        description: Number of items to be returned per page
+        schema:
+          type: string
+      - name: search
+        in: query
+        description: Search term
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Wakepark'
+    post:
+      tags:
+      - wakeparks
+      summary: Add a new wakepark
+      operationId: create_wakepark
+      requestBody:
+        description: Wakepark object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Wakepark'
+        required: true
+      responses:
+        400:
+          description: bad request
+          content: {}
+      security:
+      - wakemaps_auth:
+        - post:wakeparks
+      x-codegen-request-body-name: body
+  /wakeparks/{wakepark_id}:
+    get:
+      tags:
+      - wakeparks
+      summary: Get wakepark by ID
+      description: Returns a single wakepark
+      operationId: retrieve_wakepark
+      parameters:
+      - name: wakepark_id
+        in: path
+        description: ID of wakepark to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wakepark'
+        404:
+          description: resource not found
+          content: {}
+      security:
+      - api_key: []
+    delete:
+      tags:
+      - wakeparks
+      summary: Deletes a wakepark
+      description: Permanently deletes a wakepark listing
+      operationId: delete_wakepark
+      parameters:
+      - name: api_key
+        in: header
+        schema:
+          type: string
+      - name: wakepark_id
+        in: path
+        description: Wakepark id to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        400:
+          description: bad request
+          content: {}
+        403:
+          description: unauthorized
+          content: {}
+        404:
+          description: resource not found
+          content: {}
+      security:
+      - wakemaps_auth:
+        - delete:wakeparks
+    patch:
+      tags:
+      - wakeparks
+      summary: Update an existing wakepark
+      operationId: patch_wakepark
+      parameters:
+      - name: wakepark_id
+        in: path
+        description: ID of wakepark to return
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        description: Wakepark object that needs to be updated
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Wakepark'
+        required: true
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wakepark'
+        400:
+          description: bad request
+          content: {}
+        404:
+          description: resource not found
+          content: {}
+      security:
+      - wakemaps_auth:
+        - patch:wakeparks
+      x-codegen-request-body-name: body
+  /cables:
+    get:
+      tags:
+      - cables
+      summary: Get cables
+      description: Returns a list of all cables.
+      operationId: retrieve_cables
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cable'
+    post:
+      tags:
+      - cables
+      summary: Add a new cable
+      operationId: create_cables
+      requestBody:
+        description: cables object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cable'
+        required: true
+      responses:
+        400:
+          description: bad request
+          content: {}
+        403:
+          description: unauthorised
+          content: {}
+      security:
+      - wakemaps_auth:
+        - patch:wakeparks
+      x-codegen-request-body-name: body
+  /cables/{cable_id}:
+    get:
+      tags:
+      - cables
+      summary: Get cables
+      description: Returns a list of all cables.
+      operationId: retrieve_cable
+      parameters:
+      - name: cable_id
+        in: path
+        description: cable_id to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Cable'
+        404:
+          description: resource not found
+          content: {}
+    delete:
+      tags:
+      - cables
+      summary: Delete cable
+      operationId: delete_cable
+      parameters:
+      - name: cable_id
+        in: path
+        description: cable_id to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: success
+          content: {}
+        403:
+          description: unauthorised
+          content: {}
+        404:
+          description: resource not found
+          content: {}
+      security:
+      - wakemaps_auth:
+        - patch:wakeparks
+    patch:
+      tags:
+      - cables
+      summary: Update a cable
+      description: Update a specific cables data
+      operationId: patch_cable
+      parameters:
+      - name: cable_id
+        in: path
+        description: cable_id to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        description: cables object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cable'
+        required: true
+      responses:
+        200:
+          description: success
+          content: {}
+        400:
+          description: bad request
+          content: {}
+        403:
+          description: unauthorised
+          content: {}
+        404:
+          description: resource not found
+          content: {}
+      security:
+      - wakemaps_auth:
+        - patch:wakeparks
+      x-codegen-request-body-name: body
+  /locations:
+    get:
+      tags:
+      - locations
+      summary: Get locations
+      description: Returns a list of all locations.
+      operationId: retrieve_locations
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Location'
+    post:
+      tags:
+      - locations
+      summary: Add a new location
+      operationId: create_location
+      requestBody:
+        description: Location object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Location'
+        required: true
+      responses:
+        201:
+          description: created
+          content: {}
+        400:
+          description: bad request
+          content: {}
+        403:
+          description: unauthorised
+          content: {}
+      security:
+      - wakemaps_auth:
+        - patch:wakeparks
+      x-codegen-request-body-name: body
+  /locations/{location_id}:
+    get:
+      tags:
+      - locations
+      summary: Get location
+      description: Returns a single location.
+      operationId: retrieve_location
+      parameters:
+      - name: location_id
+        in: path
+        description: location_id to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Location'
+        404:
+          description: resource not found
+          content: {}
+    delete:
+      tags:
+      - locations
+      summary: Delete location
+      description: Delete a single location
+      operationId: delete_location
+      parameters:
+      - name: location_id
+        in: path
+        description: location_id to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: success
+          content: {}
+        403:
+          description: unauthorised
+          content: {}
+        404:
+          description: resource not found
+          content: {}
+      security:
+      - wakemaps_auth:
+        - patch:wakeparks
+    patch:
+      tags:
+      - locations
+      summary: Update a location
+      description: Update a single location's data
+      operationId: patch_location
+      parameters:
+      - name: location_id
+        in: path
+        description: location_id to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        description: cables object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Cable'
+        required: true
+      responses:
+        200:
+          description: success
+          content: {}
+        400:
+          description: bad request
+          content: {}
+        403:
+          description: unauthorised
+          content: {}
+        404:
+          description: resource not found
+          content: {}
+      security:
+      - wakemaps_auth:
+        - patch:wakeparks
+      x-codegen-request-body-name: body
+  /countries:
+    get:
+      tags:
+      - countries
+      summary: Get countries
+      description: Returns a list of all countries.
+      operationId: retrieve_countries
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Country'
+    post:
+      tags:
+      - countries
+      summary: Add a new country
+      operationId: create_country
+      requestBody:
+        description: Country object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Country'
+        required: true
+      responses:
+        201:
+          description: created
+          content: {}
+        400:
+          description: bad request
+          content: {}
+        403:
+          description: unauthorised
+          content: {}
+      security:
+      - wakemaps_auth:
+        - post:admin
+      x-codegen-request-body-name: body
+  /countries/{country_id}:
+    get:
+      tags:
+      - countries
+      summary: Get country
+      description: Returns a single country.
+      operationId: retrieve_country
+      parameters:
+      - name: country_id
+        in: path
+        description: country_id to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Country'
+        404:
+          description: resource not found
+          content: {}
+    delete:
+      tags:
+      - countries
+      summary: Delete country
+      description: Delete a single country
+      operationId: delete_country
+      parameters:
+      - name: country_id
+        in: path
+        description: country_id to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: success
+          content: {}
+        403:
+          description: unauthorised
+          content: {}
+        404:
+          description: resource not found
+          content: {}
+      security:
+      - wakemaps_auth:
+        - delete:admin
+    patch:
+      tags:
+      - countries
+      summary: Update a country
+      description: Update a single country's data
+      operationId: patch_country
+      parameters:
+      - name: country_id
+        in: path
+        description: country_id to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        description: cables object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Country'
+        required: true
+      responses:
+        200:
+          description: success
+          content: {}
+        400:
+          description: bad request
+          content: {}
+        403:
+          description: unauthorised
+          content: {}
+        404:
+          description: resource not found
+          content: {}
+      security:
+      - wakemaps_auth:
+        - patch:admin
+      x-codegen-request-body-name: body
+  /currencies:
+    get:
+      tags:
+      - currencies
+      summary: Get currencies
+      description: Returns a list of all currencies.
+      operationId: retrieve_currencies
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Currency'
+    post:
+      tags:
+      - currencies
+      summary: Add a new currency
+      operationId: create_currency
+      requestBody:
+        description: Currency object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Currency'
+        required: true
+      responses:
+        201:
+          description: created
+          content: {}
+        400:
+          description: bad request
+          content: {}
+        403:
+          description: unauthorised
+          content: {}
+      security:
+      - wakemaps_auth:
+        - post:admin
+      x-codegen-request-body-name: body
+  /currencies/{currency_id}:
+    get:
+      tags:
+      - currencies
+      summary: Get currency
+      description: Returns a single currency.
+      operationId: retrieve_currency
+      parameters:
+      - name: currency_id
+        in: path
+        description: currency_id to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Country'
+        404:
+          description: resource not found
+          content: {}
+    delete:
+      tags:
+      - currencies
+      summary: Delete currency
+      description: Delete a single currency
+      operationId: delete_currency
+      parameters:
+      - name: currency_id
+        in: path
+        description: currency_id to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: success
+          content: {}
+        403:
+          description: unauthorised
+          content: {}
+        404:
+          description: resource not found
+          content: {}
+      security:
+      - wakemaps_auth:
+        - delete:admin
+    patch:
+      tags:
+      - currencies
+      summary: Update a currency
+      description: Update a single currency's data
+      operationId: patch_currency
+      parameters:
+      - name: currency_id
+        in: path
+        description: currency_id to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        description: Currency object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Currency'
+        required: true
+      responses:
+        200:
+          description: success
+          content: {}
+        400:
+          description: bad request
+          content: {}
+        403:
+          description: unauthorised
+          content: {}
+        404:
+          description: resource not found
+          content: {}
+      security:
+      - wakemaps_auth:
+        - patch:admin
+      x-codegen-request-body-name: body
+  /languages:
+    get:
+      tags:
+      - languages
+      summary: Get languages
+      description: Returns a list of all languages.
+      operationId: retrieve_languages
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Language'
+    post:
+      tags:
+      - languages
+      summary: Add a new language
+      operationId: create_language
+      requestBody:
+        description: Language object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Language'
+        required: true
+      responses:
+        201:
+          description: created
+          content: {}
+        400:
+          description: bad request
+          content: {}
+        403:
+          description: unauthorised
+          content: {}
+      security:
+      - wakemaps_auth:
+        - post:admin
+      x-codegen-request-body-name: body
+  /languages/{language_id}:
+    get:
+      tags:
+      - languages
+      summary: Get language
+      description: Returns a single language.
+      operationId: retrieve_language
+      parameters:
+      - name: language_id
+        in: path
+        description: language_id to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Language'
+        404:
+          description: resource not found
+          content: {}
+    delete:
+      tags:
+      - languages
+      summary: Delete language
+      description: Delete a single language
+      operationId: delete_language
+      parameters:
+      - name: language_id
+        in: path
+        description: language_id to delete
+        required: true
+        schema:
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: success
+          content: {}
+        403:
+          description: unauthorised
+          content: {}
+        404:
+          description: resource not found
+          content: {}
+      security:
+      - wakemaps_auth:
+        - delete:admin
+    patch:
+      tags:
+      - languages
+      summary: Update a language
+      description: Update a single language's data
+      operationId: patch_language
+      parameters:
+      - name: language_id
+        in: path
+        description: language_id to retrieve
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        description: Language object that needs to be added
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Language'
+        required: true
+      responses:
+        200:
+          description: success
+          content: {}
+        400:
+          description: bad request
+          content: {}
+        403:
+          description: unauthorised
+          content: {}
+        404:
+          description: resource not found
+          content: {}
+      security:
+      - wakemaps_auth:
+        - patch:admin
+      x-codegen-request-body-name: body
+  /users:
+    get:
+      tags:
+      - users
+      summary: Retrieve users
+      description: Returns a list of all users - only performed with read:users permission
+        on role
+      operationId: retrieve_users
+      parameters:
+      - name: per_page
+        in: query
+        description: Number of items to be returned per page
+        schema:
+          type: string
+      - name: search
+        in: query
+        description: Search term
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content: {}
+        403:
+          description: unauthorized
+          content: {}
+        404:
+          description: resource not found
+          content: {}
+      security:
+      - wakemaps_auth:
+        - get:users
+    post:
+      tags:
+      - users
+      summary: Create user
+      description: This can be done by any user - each user requires a unique email
+        address.
+      operationId: create_user
+      requestBody:
+        description: Created user object
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        201:
+          description: created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: bad request
+          content: {}
+        404:
+          description: resource not found
+          content: {}
+      x-codegen-request-body-name: body
+  /user/{userId}:
+    get:
+      tags:
+      - users
+      summary: Get user by userId
+      operationId: retrieve_user
+      parameters:
+      - name: userId
+        in: path
+        description: The userId for the user that needs to be fetched.
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: bad request
+          content: {}
+        404:
+          description: resource not found
+          content: {}
+    delete:
+      tags:
+      - users
+      summary: Delete user
+      description: This can only be done by the logged in user or by superadmin.
+      operationId: delete_user
+      parameters:
+      - name: userId
+        in: path
+        description: The name that needs to be deleted
+        required: true
+        schema:
+          type: string
+      responses:
+        400:
+          description: Invalid username supplied
+          content: {}
+        404:
+          description: User not found
+          content: {}
+      security:
+      - wakemaps_auth:
+        - delete:users
+    patch:
+      tags:
+      - users
+      summary: Updated user
+      description: This can only be done by the logged in user.
+      operationId: update_user
+      parameters:
+      - name: userId
+        in: path
+        description: The userId for the user to be updated
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Updated user object
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        400:
+          description: Invalid user supplied
+          content: {}
+        404:
+          description: User not found
+          content: {}
+      security:
+      - wakemaps_auth:
+        - patch:users
+      x-codegen-request-body-name: body
+  /user/login:
+    get:
+      tags:
+      - users
+      summary: Logs user into the system
+      operationId: login_user
+      parameters:
+      - name: username
+        in: query
+        description: The user name for login
+        required: true
+        schema:
+          type: string
+      - name: password
+        in: query
+        description: The password for login in clear text
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: successful operation
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              description: date in UTC when token expires
+              schema:
+                type: string
+                format: date-time
+          content:
+            application/json:
+              schema:
+                type: string
+        400:
+          description: Invalid username/password supplied
+          content: {}
+  /user/logout:
+    get:
+      tags:
+      - users
+      summary: Logs out current logged in user session
+      operationId: logout_user
+      responses:
+        default:
+          description: successful operation
+          content: {}
+components:
+  schemas:
+    Location:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        lat:
+          type: integer
+          description: Latitude
+          format: int64
+        lng:
+          type: integer
+          description: Longitude
+          format: int64
+        address1:
+          type: string
+        address2:
+          type: string
+        address3:
+          type: string
+        area_code:
+          type: string
+          example: GP
+        city_town:
+          type: string
+          description: The city, town or nearest town name that people typically associate
+            with the location.
+          example: Johannesburg
+        region:
+          type: string
+          description: The region or provice or state that the city or town is located
+            in.
+          example: Gauteng
+        time_zone:
+          type: string
+          description: The timezone that the location is in in UTC offset
+          example: +2:00
+        country:
+          $ref: '#/components/schemas/Country'
+    Country:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        country_name:
+          type: string
+        country_code:
+          type: string
+          description: ISO 3166-1 2-letter country code
+        country_flag:
+          type: string
+        country_flag_emoji:
+          type: string
+        currency:
+          $ref: '#/components/schemas/Currency'
+    Currency:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        currency_name:
+          type: string
+          example: US Dollar
+        currency_code:
+          type: string
+          description: ISO 4217 currency code
+          example: USD
+        currency_symbol:
+          type: string
+          example: $
+        currency_short:
+          type: string
+          example: dollar
+    Language:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        language_name:
+          type: string
+          example: English
+        language_code:
+          type: string
+          description: ISO 639-1 language code
+          example: en
+    Cable:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        type:
+          type: string
+          description: Cable type
+          enum:
+          - 5-Tower
+          - 6-Tower
+          - 2-Tower
+          - Other
+        direction:
+          type: string
+          description: Direction of the running cable
+          enum:
+          - clockwise
+          - counter-clockwise
+          - straight-line
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        username:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+          description: Minimum 8 characters. Must contain 1 uppercase, 1 lowercase,
+            1 symbol, 1 number
+        phone:
+          type: string
+        user_role:
+          type: string
+          description: User role
+          enum:
+          - admin
+          - park_admin
+          - rider
+    Wakepark:
+      required:
+      - name
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+          example: Stoke City Wakepark
+        park_audience:
+          type: string
+          description: Type audience for the wakepark
+          enum:
+          - public
+          - private
+          - by appointment
+          - planned
+        park_open:
+          type: boolean
+          description: Is the park currently open?
+        park_published:
+          type: boolean
+          description: Is the park ready to be viewed online?
+        logo_url:
+          type: string
+          description: URL String for the wakepark logo
+        email1:
+          type: string
+          example: info@domain.com
+        email2:
+          type: string
+        telephone1:
+          type: string
+          example: +27 12 345 6789
+        telephone2:
+          type: string
+          example: +27 79 345 6789
+        instagram_url:
+          type: string
+        facebook_url:
+          type: string
+          example: https://www.instagram.com/handle/
+        youtube_url:
+          type: string
+          example: https://www.youtube.com/user/handle
+        vimeo_url:
+          type: string
+          example: https://vimeo.com/handle
+        twitter_url:
+          type: string
+          example: https://twitter.com/handle
+        website_url:
+          type: string
+          example: https://www.yourwebsitename.com
+        summary:
+          type: string
+          description: The headline (short) summary of wakepark.
+        description:
+          type: string
+          description: The full (long) description of the wakepark, its facilities
+            and what it offers.
+        location:
+          $ref: '#/components/schemas/Location'
+        languages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Language'
+        cable_type:
+          $ref: '#/components/schemas/Cable'
+        images:
+          type: array
+          items:
+            type: string
+            description: Image URLs
+        videos:
+          type: array
+          items:
+            type: string
+            description: Video URLs
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+  securitySchemes:
+    wakemaps_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://petstore.swagger.io/oauth/dialog
+          scopes:
+            post:wakeparks: create wakeparks
+            patch:wakeparks: update wakeparks
+            delete:wakeparks: delete wakeparks
+            get:wakeparks: retrieve wakeparks
+            post:location: create location
+            patch:location: update location
+            delete:location: delete location
+            get:location: retrieve location
+            post:users: create users
+            patch:users: update users
+            delete:users: delete users
+            get:users: retrieve users
+            post:admin: create admin
+            patch:admin: update admin
+            delete:admin: delete admin
+            get:admin: retrieve admin
+    api_key:
+      type: apiKey
+      description: JWT Token (https://jwt.io/)
+      name: api_key
+      in: header
