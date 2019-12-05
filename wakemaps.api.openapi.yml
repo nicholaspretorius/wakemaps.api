@@ -229,7 +229,7 @@ paths:
     get:
       tags:
       - cables
-      summary: Get cables
+      summary: Get cable
       description: Returns a list of all cables.
       operationId: retrieve_cable
       parameters:
@@ -912,7 +912,7 @@ paths:
           description: resource not found
           content: {}
       x-codegen-request-body-name: body
-  /user/{userId}:
+  /users/{userId}:
     get:
       tags:
       - users
@@ -992,7 +992,7 @@ paths:
       - wakemaps_auth:
         - patch:users
       x-codegen-request-body-name: body
-  /user/login:
+  /users/login:
     get:
       tags:
       - users
@@ -1032,7 +1032,7 @@ paths:
         400:
           description: Invalid username/password supplied
           content: {}
-  /user/logout:
+  /users/logout:
     get:
       tags:
       - users
