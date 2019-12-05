@@ -1123,13 +1123,17 @@ definitions:
         format: "int64"
       country_name:
         type: "string"
+        example: "South Africa"
       country_code:
         type: "string"
         description: "ISO 3166-1 2-letter country code"
+        example: "za"
       country_flag:
         type: "string"
+        example: "https://upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa.svg"
       country_flag_emoji:
         type: "string"
+        example: "🇿🇦"
       currency:
         $ref: "#/definitions/Currency"
   Currency:
@@ -1139,18 +1143,18 @@ definitions:
         type: "integer"
         format: "int64"
       currency_name:
-        example: "US Dollar"
+        example: "South African rand"
         type: "string"
       currency_code:
         type: "string"
-        example: "USD"
+        example: "ZAR"
         description: "ISO 4217 currency code"
       currency_symbol:
-        example: "$"
+        example: "R"
         type: "string"
       currency_short:
         type: "string"
-        example: "dollar"
+        example: "rand"
   Language:
     type: "object"
     properties:
