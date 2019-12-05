@@ -1091,13 +1091,17 @@ components:
           format: int64
         country_name:
           type: string
+          example: South Africa
         country_code:
           type: string
           description: ISO 3166-1 2-letter country code
+          example: za
         country_flag:
           type: string
+          example: https://upload.wikimedia.org/wikipedia/commons/a/af/Flag_of_South_Africa.svg
         country_flag_emoji:
           type: string
+          example: 🇿🇦
         currency:
           $ref: '#/components/schemas/Currency'
     Currency:
@@ -1108,17 +1112,17 @@ components:
           format: int64
         currency_name:
           type: string
-          example: US Dollar
+          example: South African rand
         currency_code:
           type: string
           description: ISO 4217 currency code
-          example: USD
+          example: ZAR
         currency_symbol:
           type: string
-          example: $
+          example: R
         currency_short:
           type: string
-          example: dollar
+          example: rand
     Language:
       type: object
       properties:
@@ -1180,6 +1184,47 @@ components:
           - admin
           - park_admin
           - rider
+    Contacts:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Channel name
+            enum:
+            - Telephone
+            - Email
+          type:
+            type: string
+            description: Contact channel type
+            enum:
+            - Telephone
+            - Facebook Messenger
+            - Whatsapp
+            - Email Address
+          value:
+            type: string
+            description: Telephone or messenger number or email address
+    Channels:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Web/social media channels
+            enum:
+            - Facebook
+            - Instagram
+            - YouTube
+            - Twitter
+            - Vimeo
+            - Website
+          url:
+            type: string
+            description: Social media URL and handle
+            example: https://www.instagram.com/handle_name
     Wakepark:
       required:
       - name
@@ -1208,34 +1253,10 @@ components:
         logo_url:
           type: string
           description: URL String for the wakepark logo
-        email1:
-          type: string
-          example: info@domain.com
-        email2:
-          type: string
-        telephone1:
-          type: string
-          example: +27 12 345 6789
-        telephone2:
-          type: string
-          example: +27 79 345 6789
-        instagram_url:
-          type: string
-        facebook_url:
-          type: string
-          example: https://www.instagram.com/handle/
-        youtube_url:
-          type: string
-          example: https://www.youtube.com/user/handle
-        vimeo_url:
-          type: string
-          example: https://vimeo.com/handle
-        twitter_url:
-          type: string
-          example: https://twitter.com/handle
-        website_url:
-          type: string
-          example: https://www.yourwebsitename.com
+        contact_details:
+          $ref: '#/components/schemas/Contacts'
+        channels:
+          $ref: '#/components/schemas/Channels'
         summary:
           type: string
           description: The headline (short) summary of wakepark.

@@ -1189,6 +1189,17 @@ definitions:
           - "clockwise"
           - "counter-clockwise"
           - "straight-line"
+      height:
+        type: "integer"
+        description: "The height of the cable line in meters"
+        example: 12
+      length: 
+        type: "integer"
+        description: "The total length of the cable in meters"
+        example: 800
+      num_carriers:
+        type: "integer"
+        example: 10
   User:
     type: "object"
     properties:
@@ -1220,6 +1231,9 @@ definitions:
     items:
       type: "object"
       properties:
+        id:
+          type: "integer"
+          format: "int64" 
         name:
           type: "string"
           description: "Channel name"
@@ -1243,6 +1257,9 @@ definitions:
     items:
       type: "object"
       properties:
+        id:
+          type: "integer"
+          format: "int64" 
         name:
           type: "string"
           description: "Web/social media channels"
