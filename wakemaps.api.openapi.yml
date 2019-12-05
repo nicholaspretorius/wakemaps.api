@@ -84,9 +84,18 @@ paths:
               $ref: '#/components/schemas/Wakepark'
         required: true
       responses:
+        201:
+          description: created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wakepark'
         400:
           description: bad request
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - wakemaps_auth:
         - post:wakeparks
@@ -115,7 +124,10 @@ paths:
                 $ref: '#/components/schemas/Wakepark'
         404:
           description: resource not found
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - api_key: []
     delete:
@@ -137,15 +149,30 @@ paths:
           type: integer
           format: int64
       responses:
+        200:
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Wakepark'
         400:
           description: bad request
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         403:
           description: unauthorized
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         404:
           description: resource not found
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - wakemaps_auth:
         - delete:wakeparks
@@ -178,10 +205,16 @@ paths:
                 $ref: '#/components/schemas/Wakepark'
         400:
           description: bad request
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         404:
           description: resource not found
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - wakemaps_auth:
         - patch:wakeparks
@@ -215,12 +248,24 @@ paths:
               $ref: '#/components/schemas/Cable'
         required: true
       responses:
+        201:
+          description: created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cable'
         400:
           description: bad request
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         403:
           description: unauthorised
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - wakemaps_auth:
         - patch:wakeparks
@@ -251,7 +296,10 @@ paths:
                   $ref: '#/components/schemas/Cable'
         404:
           description: resource not found
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
     delete:
       tags:
       - cables
@@ -268,13 +316,22 @@ paths:
       responses:
         200:
           description: success
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cable'
         403:
           description: unauthorised
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         404:
           description: resource not found
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - wakemaps_auth:
         - patch:wakeparks
@@ -302,16 +359,28 @@ paths:
       responses:
         200:
           description: success
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cable'
         400:
           description: bad request
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         403:
           description: unauthorised
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         404:
           description: resource not found
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - wakemaps_auth:
         - patch:wakeparks
@@ -347,13 +416,22 @@ paths:
       responses:
         201:
           description: created
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'
         400:
           description: bad request
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         403:
           description: unauthorised
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - wakemaps_auth:
         - patch:wakeparks
@@ -384,7 +462,10 @@ paths:
                   $ref: '#/components/schemas/Location'
         404:
           description: resource not found
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
     delete:
       tags:
       - locations
@@ -402,13 +483,22 @@ paths:
       responses:
         200:
           description: success
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Location'
         403:
           description: unauthorised
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         404:
           description: resource not found
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - wakemaps_auth:
         - patch:wakeparks
@@ -436,16 +526,28 @@ paths:
       responses:
         200:
           description: success
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Cable'
         400:
           description: bad request
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         403:
           description: unauthorised
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         404:
           description: resource not found
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - wakemaps_auth:
         - patch:wakeparks
@@ -481,13 +583,22 @@ paths:
       responses:
         201:
           description: created
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Country'
         400:
           description: bad request
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         403:
           description: unauthorised
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - wakemaps_auth:
         - post:admin
@@ -518,7 +629,10 @@ paths:
                   $ref: '#/components/schemas/Country'
         404:
           description: resource not found
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
     delete:
       tags:
       - countries
@@ -536,13 +650,22 @@ paths:
       responses:
         200:
           description: success
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Country'
         403:
           description: unauthorised
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         404:
           description: resource not found
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - wakemaps_auth:
         - delete:admin
@@ -570,16 +693,28 @@ paths:
       responses:
         200:
           description: success
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Country'
         400:
           description: bad request
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         403:
           description: unauthorised
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         404:
           description: resource not found
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - wakemaps_auth:
         - patch:admin
@@ -615,13 +750,22 @@ paths:
       responses:
         201:
           description: created
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Currency'
         400:
           description: bad request
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         403:
           description: unauthorised
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - wakemaps_auth:
         - post:admin
@@ -652,7 +796,10 @@ paths:
                   $ref: '#/components/schemas/Country'
         404:
           description: resource not found
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
     delete:
       tags:
       - currencies
@@ -670,13 +817,22 @@ paths:
       responses:
         200:
           description: success
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Currency'
         403:
           description: unauthorised
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         404:
           description: resource not found
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - wakemaps_auth:
         - delete:admin
@@ -704,16 +860,28 @@ paths:
       responses:
         200:
           description: success
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Currency'
         400:
           description: bad request
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         403:
           description: unauthorised
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         404:
           description: resource not found
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - wakemaps_auth:
         - patch:admin
@@ -749,13 +917,22 @@ paths:
       responses:
         201:
           description: created
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Language'
         400:
           description: bad request
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         403:
           description: unauthorised
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - wakemaps_auth:
         - post:admin
@@ -786,7 +963,10 @@ paths:
                   $ref: '#/components/schemas/Language'
         404:
           description: resource not found
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
     delete:
       tags:
       - languages
@@ -804,13 +984,22 @@ paths:
       responses:
         200:
           description: success
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Language'
         403:
           description: unauthorised
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         404:
           description: resource not found
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - wakemaps_auth:
         - delete:admin
@@ -838,16 +1027,28 @@ paths:
       responses:
         200:
           description: success
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Language'
         400:
           description: bad request
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         403:
           description: unauthorised
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
         404:
           description: resource not found
-          content: {}
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
       security:
       - wakemaps_auth:
         - patch:admin
