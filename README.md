@@ -23,7 +23,7 @@ To connect to the database and check the contents:
 
 * `docker-compose exec db psql --username=username_goes_here`
 * `\l` - lists all the databases
-* `\c wakemaps_test` - connect to the wakemaps_test database
+* `\c wakemaps_dev` - connect to the wakemaps_dev database
 * `\d` - to view the tables
 * `\dt` - to view the schema
 * `SELECT * FROM wakeparks;` - to see what is in the table
