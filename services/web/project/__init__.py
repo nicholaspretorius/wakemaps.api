@@ -1,8 +1,9 @@
+import os
 from flask import Flask, jsonify, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config.from_object("project.config.Config")
+app.config.from_object("project.config.DevelopmentConfig")
 db = SQLAlchemy(app)
 
 from . import models  # noqa
