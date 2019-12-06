@@ -1,0 +1,1 @@
+CREATE DATABASE wakemaps_prod;
