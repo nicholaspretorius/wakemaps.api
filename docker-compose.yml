@@ -15,6 +15,7 @@ services:
   db:
     image: postgres
     volumes:
+      - ./create.sql:/docker-entrypoint-initdb.d/create.sql
       - postgres_data:/var/lib/postgresql/data/
     env_file:
       - ./.env.dev.db
